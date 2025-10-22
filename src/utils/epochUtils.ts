@@ -1,0 +1,89 @@
+import { TimeUnit } from '../types';
+
+export const detectTimeUnit = (epoch: number): TimeUnit => {
+  const epochStr = Math.abs(epoch).toString();
+
+  if (epochStr.length <= 10) {
+    return 'seconds';
+  } else if (epochStr.length <= 13) {
+    return 'milliseconds';
+  } else {
+    return 'microseconds';
+  }
+};
+
+export const normalizeToMilliseconds = (epoch: number, unit: TimeUnit): number => {
+  switch (unit) {
+    case 'seconds':
+      return epoch * 1000;
+    case 'milliseconds':
+      return epoch;
+    case 'microseconds':
+      return epoch / 1000;
+    default:
+      return epoch;
+  }
+};
+
+export const convertFromMilliseconds = (ms: number, targetUnit: TimeUnit): number => {
+  switch (targetUnit) {
+    case 'seconds':
+      return Math.floor(ms / 1000);
+    case 'milliseconds':
+      return Math.floor(ms);
+    case 'microseconds':
+      return Math.floor(ms * 1000);
+    default:
+      return ms;
+  }
+};
+
+export const formatDateTimeString = (date: Date, isUTC: boolean = false): string => {
+  if (isUTC) {
+    return date.toISOString().replace('T', ' ').replace('Z', ' UTC');
+  }
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  const tzOffset = -date.getTimezoneOffset();
+  const tzHours = Math.floor(Math.abs(tzOffset) / 60);
+  const tzMinutes = Math.abs(tzOffset) % 60;
+  const tzSign = tzOffset >= 0 ? '+' : '-';
+  const timezone = `GMT${tzSign}${String(tzHours).padStart(2, '0')}:${String(tzMinutes).padStart(2, '0')}`;
+
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${timezone}`;
+};
+
+export const parseDateTimeString = (dateStr: string): number | null => {
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) {
+    return null;
+  }
+  return date.getTime();
+};
+
+export const isValidEpoch = (epoch: number): boolean => {
+  if (isNaN(epoch) || !isFinite(epoch)) return false;
+
+  const unit = detectTimeUnit(epoch);
+  const ms = normalizeToMilliseconds(epoch, unit);
+
+  const minDate = new Date('1970-01-01').getTime();
+  const maxDate = new Date('2100-12-31').getTime();
+
+  return ms >= minDate && ms <= maxDate;
+};
+
+export const getCurrentEpoch = (unit: TimeUnit): number => {
+  const now = Date.now();
+  return convertFromMilliseconds(now, unit);
+};
+
+export const getTimezones = (): string[] => {
+  return Intl.supportedValuesOf('timeZone');
+};
