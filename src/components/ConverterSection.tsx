@@ -6,7 +6,8 @@ import {
   convertFromMilliseconds,
   formatDateTimeString,
   parseDateTimeString,
-  isValidEpoch
+  isValidEpoch,
+  cleanEpochInput
 } from '../utils/epochUtils';
 import { TimeUnit } from '../types';
 
@@ -35,7 +36,9 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
       return;
     }
 
-    const numEpoch = parseFloat(epochInput);
+    // Clean the input to remove suffixes and invalid characters
+    const cleanedInput = cleanEpochInput(epochInput);
+    const numEpoch = parseFloat(cleanedInput);
 
     if (isNaN(numEpoch)) {
       setError('Invalid epoch value');
@@ -44,7 +47,7 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
     }
 
     if (!isValidEpoch(numEpoch)) {
-      setError('Epoch value out of valid range (1970-2100)');
+      setError('Epoch value out of valid range (1900-2100)');
       setDateInput('');
       return;
     }
@@ -165,7 +168,7 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
+          <label className="flex text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 items-center gap-2">
             <Calendar className="w-4 h-4" />
             UTC Date & Time
           </label>

@@ -73,7 +73,8 @@ export const isValidEpoch = (epoch: number): boolean => {
   const unit = detectTimeUnit(epoch);
   const ms = normalizeToMilliseconds(epoch, unit);
 
-  const minDate = new Date('1970-01-01').getTime();
+  // Allow a wider range of dates, including before 1970
+  const minDate = new Date('1900-01-01').getTime();
   const maxDate = new Date('2100-12-31').getTime();
 
   return ms >= minDate && ms <= maxDate;
@@ -86,4 +87,12 @@ export const getCurrentEpoch = (unit: TimeUnit): number => {
 
 export const getTimezones = (): string[] => {
   return Intl.supportedValuesOf('timeZone');
+};
+
+export const cleanEpochInput = (input: string): string => {
+  // Remove common suffixes and invalid characters
+  return input
+    .replace(/[Ss]$/, '') // Remove 'S' or 's' suffix
+    .replace(/[^0-9.-]/, '') // Keep only digits, dots, and minus sign
+    .trim();
 };

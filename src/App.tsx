@@ -5,6 +5,7 @@ import { CurrentEpochClock } from './components/CurrentEpochClock';
 import { BatchConverter } from './components/BatchConverter';
 import { CodeSnippets } from './components/CodeSnippets';
 import { Footer } from './components/Footer';
+import { SideNav } from './components/SideNav';
 import { ToastContainer } from './components/Toast';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
@@ -49,22 +50,20 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-6">
             <ConverterSection onCopy={handleCopy} />
+            <CurrentEpochClock onCopy={handleCopy} />
+            {/* <BatchConverter />
+            <CodeSnippets
+              epoch={currentEpoch}
+              unit="seconds"
+              onCopy={handleCopy}
+            /> */}
           </div>
 
           <div className="space-y-6">
-            <CurrentEpochClock onCopy={handleCopy} />
+            <SideNav onToggleTheme={toggleTheme} isDark={theme === 'dark'} />
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-          <BatchConverter />
-          <CodeSnippets
-            epoch={currentEpoch}
-            unit="seconds"
-            onCopy={handleCopy}
-          />
         </div>
       </main>
 
