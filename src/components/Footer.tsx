@@ -35,7 +35,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+          {/* <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
             <a href="#about" className="hover:text-blue-500 transition-colors">
               About
             </a>
@@ -47,7 +47,7 @@ export const Footer = () => {
             <a href="#api" className="hover:text-blue-500 transition-colors">
               API
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-4 text-center text-xs text-gray-400 dark:text-gray-600">

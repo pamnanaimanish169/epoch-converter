@@ -1,4 +1,5 @@
-import { Clock, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
+import Logo from '../../epoch-converter-logo.png';
 import { Theme } from '../hooks/useTheme';
 
 interface HeaderProps {
@@ -12,9 +13,7 @@ export const Header = ({ theme, onToggleTheme }: HeaderProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg">
-              <Clock className="w-6 h-6 text-white" />
-            </div>
+            <img src={Logo} alt="Epoch Converter" className="w-16 h-16 md:w-20 md:h-20 rounded-lg object-contain" />
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Epoch Converter
