@@ -1,4 +1,5 @@
-import { ChevronRight, Home, Settings, Sun, Moon, Wrench } from 'lucide-react';
+import { ChevronRight, Home, Settings, Sun, Moon, Wrench, Info, HelpCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface SideNavProps {
   onToggleTheme: () => void;
@@ -14,11 +15,25 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
             <h3 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Pages</h3>
             <ul className="space-y-1">
               <li>
-                <a href="#home" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Home className="w-4 h-4" />
                   <span>Home</span>
                   <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <Info className="w-4 h-4" />
+                  <span>About</span>
+                  <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <HelpCircle className="w-4 h-4" />
+                  <span>FAQ</span>
+                  <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
+                </Link>
               </li>
               <li>
                 <a href="#preferences" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
