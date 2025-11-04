@@ -24,7 +24,7 @@ export const Header = ({ theme, onToggleTheme }: HeaderProps) => {
             </div>
           </div>
 
-          <button
+          {/* <button
             onClick={onToggleTheme}
             className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             aria-label="Toggle theme"
@@ -34,7 +34,7 @@ export const Header = ({ theme, onToggleTheme }: HeaderProps) => {
             ) : (
               <Moon className="w-5 h-5 text-gray-700" />
             )}
-          </button>
+          </button> */}
         </div>
       </div>
     </header>

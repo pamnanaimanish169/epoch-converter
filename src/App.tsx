@@ -40,26 +40,28 @@ function App() {
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2 space-y-6">
-                  <ConverterSection onCopy={handleCopy} />
-                  <CurrentEpochClock onCopy={handleCopy} />
-                  {/* Reserved for future tools/components */}
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <ConverterSection onCopy={handleCopy} />
+                    <CurrentEpochClock onCopy={handleCopy} />
+                    {/* Reserved for future tools/components */}
+                  </>
+                }
+              />
+              <Route path="/about" element={<About />} />
+              <Route path="/faq" element={<FAQ />} />
+            </Routes>
+          </div>
 
-                <div className="space-y-6">
-                  <SideNav onToggleTheme={toggleTheme} isDark={theme === 'dark'} />
-                </div>
-              </div>
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<FAQ />} />
-        </Routes>
+          <div className="space-y-6">
+            <SideNav onToggleTheme={toggleTheme} isDark={theme === 'dark'} />
+          </div>
+        </div>
       </main>
 
       <Footer />

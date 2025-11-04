@@ -35,13 +35,13 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                   <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <a href="#preferences" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Settings className="w-4 h-4" />
                   <span>Preferences</span>
                   <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
                 </a>
-              </li>
+              </li> */}
               <li>
                 <button onClick={onToggleTheme} className="w-full flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   {isDark ? <Sun className="w-4 h-4 text-yellow-500" /> : <Moon className="w-4 h-4" />}
@@ -51,7 +51,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h3 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Tools</h3>
             <ul className="space-y-1">
               {[
@@ -78,7 +78,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </nav>
     </aside>
