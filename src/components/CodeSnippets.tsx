@@ -89,7 +89,7 @@ export const CodeSnippets = ({ epoch, unit, onCopy }: CodeSnippetsProps) => {
             Mock API Endpoint
           </h3>
           <code className="text-xs font-mono text-blue-700 dark:text-blue-400 break-all">
-            GET /api/convert?epoch={epoch}&unit={unit}
+            GET /api/convert?epoch={epoch}&unit={unit} 
           </code>
           <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
             Example endpoint format for your application
