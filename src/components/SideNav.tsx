@@ -1,4 +1,4 @@
-import { ChevronRight, Home, Sun, Moon, Info, HelpCircle } from 'lucide-react';
+import { Home, Sun, Moon, Info, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface SideNavProps {
@@ -18,21 +18,18 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 <Link to="/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Home className="w-4 h-4" />
                   <span>Home</span>
-                  <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Info className="w-4 h-4" />
                   <span>About</span>
-                  <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
                 </Link>
               </li>
               <li>
                 <Link to="/faq" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <HelpCircle className="w-4 h-4" />
                   <span>FAQ</span>
-                  <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />
                 </Link>
               </li>
               <li>
