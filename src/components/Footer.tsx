@@ -51,7 +51,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-4 text-center text-xs text-gray-400 dark:text-gray-600">
-          © {currentTime.getFullYear()} Epoch Converter. Built with React & TypeScript.
+          © {currentTime.getFullYear()} Epoch Tools.
         </div>
       </div>
     </footer>
