@@ -207,6 +207,12 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
           </div>
         </div>
 
+        <div className="space-y-4">
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <p className="text-xs text-gray-500 dark:text-gray-500">Epoch & Unix Timestamp Converter converts an epoch/unix timestamp into a human-readable date. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for anyone working with time-based data.</p>
+          </div>
+        </div>
+
         {error && (
           <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
             <p className="text-sm text-red-600 dark:text-red-400">{error}</p>

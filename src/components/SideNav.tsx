@@ -1,4 +1,4 @@
-import { Home, Sun, Moon, Info, HelpCircle } from 'lucide-react';
+import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface SideNavProps {
@@ -41,6 +41,23 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
             </ul>
           </div>
         </div>
+        <div>
+            <h3 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Tools</h3>
+            <ul className="space-y-1">
+              <li>
+                <Link to="/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <RefreshCw className="w-4 h-4" />
+                  <span>Epoch Converter</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/week-number" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <Calendar className="w-4 h-4" />
+                  <span>Week Number</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
       </nav>
     </aside>
   );

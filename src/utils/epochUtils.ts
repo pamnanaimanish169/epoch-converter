@@ -101,3 +101,22 @@ export const cleanEpochInput = (input: string): string => {
     .replace(/[^0-9.-]/, '') // Keep only digits, dots, and minus sign
     .trim();
 };
+
+/**
+ * Get the ISO week number for a given date
+ * ISO 8601 week numbering: Week 1 is the week with the year's first Thursday
+ */
+export const getWeekNumber = (date: Date = new Date()): number => {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
+};
+
+/**
+ * Get the current week number
+ */
+export const getCurrentWeekNumber = (): number => {
+  return getWeekNumber(new Date());
+};

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Header } from './components/Header';
 import { ConverterSection } from './components/ConverterSection';
 import { CurrentEpochClock } from './components/CurrentEpochClock';
+import { WeekNumber } from './components/WeekNumber';
 import { Footer } from './components/Footer';
 import { SideNav } from './components/SideNav';
 import { ToastContainer } from './components/Toast';
@@ -76,6 +77,28 @@ function App() {
             ]
           }
         };
+      case '/week-number':
+        return {
+          ...defaultConfig,
+          title: 'Current Week Number Today - Week Number Calculator | ISO 8601',
+          description: 'Find out what week number it is today. Get the current ISO 8601 week number instantly with copy functionality. Free week number calculator tool.',
+          keywords: 'week number, current week number, week number today, ISO week number, week calculator, what week is it',
+          url: currentUrl,
+          type: 'website' as const,
+          structuredData: {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Current Week Number Calculator",
+            "description": "Find out what week number it is today using ISO 8601 standard",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        };
       default:
         return {
           ...defaultConfig,
@@ -142,6 +165,7 @@ function App() {
                   </>
                 }
               />
+              <Route path="/week-number" element={<WeekNumber onCopy={handleCopy} />} />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
             </Routes>
