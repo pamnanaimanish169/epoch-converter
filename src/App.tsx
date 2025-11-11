@@ -24,7 +24,7 @@ function App() {
   // SEO configuration based on current route
   const getSEOConfig = () => {
     const defaultConfig = {
-      siteName: 'Epoch Converter',
+      siteName: 'Epoch & Unix Timestamp Converter',
       locale: 'en_US',
       image: `${baseUrl}/epoch-converter-logo.png`,
     };
@@ -33,7 +33,7 @@ function App() {
       case '/about':
         return {
           ...defaultConfig,
-          title: 'About - Epoch Converter | Unix Timestamp Tool',
+          title: 'About - Epoch & Unix Timestamp Converter | Unix Timestamp Tool',
           description: 'Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter that turns raw timestamps into clear, readable dates.',
           keywords: 'epoch converter, unix timestamp, about epoch tools, time converter, developer tools',
           url: currentUrl,
@@ -41,7 +41,7 @@ function App() {
           structuredData: {
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "About Epoch Converter",
+            "headline": "About Epoch & Unix Timestamp Converter",
             "description": "Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter.",
             "author": {
               "@type": "Organization",
@@ -56,7 +56,7 @@ function App() {
       case '/faq':
         return {
           ...defaultConfig,
-          title: 'FAQ - Epoch Converter | Frequently Asked Questions',
+          title: 'FAQ - Epoch & Unix Timestamp Converter | Frequently Asked Questions',
           description: 'Frequently asked questions about epoch converter, unix timestamp conversion, ISO 8601 format, and time zone handling.',
           keywords: 'epoch converter FAQ, unix timestamp questions, epoch time help, timestamp converter FAQ',
           url: currentUrl,
@@ -79,7 +79,7 @@ function App() {
       default:
         return {
           ...defaultConfig,
-          title: 'Epoch Converter - Unix Timestamp Tool | Convert Time Online',
+          title: 'Epoch & Unix Timestamp Converter - Unix Timestamp Tool | Convert Time Online',
           description: 'Convert Unix timestamps to human-readable time and back instantly. Free online epoch converter with real-time conversion, batch processing, and developer tools.',
           keywords: 'epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools',
           url: currentUrl,
@@ -87,7 +87,7 @@ function App() {
           structuredData: {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "Epoch Converter",
+            "name": "Epoch & Unix Timestamp Converter",
             "description": "Convert Unix timestamps to human-readable time and back instantly",
             "applicationCategory": "UtilityApplication",
             "operatingSystem": "Any",

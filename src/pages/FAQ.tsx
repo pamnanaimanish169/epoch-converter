@@ -5,7 +5,7 @@ export const FAQ = () => {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h1>
 
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-1">What is an epoch converter and how do I use it?</h3>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-1">What is an epoch time converter and how do I use it?</h3>
       <p className="text-gray-700 dark:text-gray-300">
         An{' '}
         <a
@@ -14,9 +14,9 @@ export const FAQ = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          epoch converter
+          epoch time converter
         </a>{' '}
-        is a tool that helps you convert Unix timestamps (also called <a
+        is a tool that helps you convert Unix timestamp (also called <a
           href="https://en.wikipedia.org/wiki/Epoch_(computing)"
           className="text-blue-600 dark:text-blue-400 hover:underline"
           target="_blank"
@@ -73,7 +73,7 @@ export const FAQ = () => {
         >
           Unix time
         </a>
-        {' '}refer to the same system, counting seconds since January 1, 1970 UTC (i.e. Unix epoch or the Epoch time); you can use a unix time converter or epoch converter for identical results.
+        {' '}refer to the same system, counting seconds since January 1, 1970 UTC (i.e. Unix epoch or the Epoch time); you can use a unix timestamp converter or epoch time converter for identical results.
       </p>
 
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-1">How can I convert milliseconds to date and what is “current millis”?</h3>
@@ -85,7 +85,7 @@ export const FAQ = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          milliseconds to date converter
+          unix timestamp converter
         </a>
         {' '}for timestamps in milliseconds (13 digits); you can also check the current millis counter to get the exact epoch time in milliseconds right now—useful for programming and event logs.
       </p>
@@ -128,7 +128,7 @@ export const FAQ = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          date to epoch converter
+          unix timestamp converter
         </a>
         {' '}will instantly provide you with the Unix timestamp in seconds, milliseconds, or your chosen unit.
       </p>

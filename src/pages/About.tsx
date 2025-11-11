@@ -6,12 +6,12 @@ export const About = () => {
       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What we do?</h1>
       <p className="text-gray-700 dark:text-gray-300">
         <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Epoch Tools </a>
-        is a fast, privacy-first epoch converter and unix time converter that turns raw timestamps into clear, readable dates. It also lets you convert timestamp to date, convert date back to epoch, and format results for APIs in seconds.
+        is a fast, privacy-first epoch time converter and unix timestamp converter that turns raw timestamps into clear, readable dates. It also lets you convert timestamp to date, convert date back to epoch, and format results for APIs in seconds.
       </p>
 
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mt-8 mb-2">Built for clarity</h2>
       <p className="text-gray-700 dark:text-gray-300">
-        Whether you have seconds, milliseconds, microseconds, or nanoseconds, the epoch converter detects the right precision so milliseconds to date is as effortless as seconds to date. Dedicated tools cover date to epoch, epoch to date, and epoch to
+        Whether you have seconds, milliseconds, microseconds, or nanoseconds, the epoch time converter detects the right precision so milliseconds to date is as effortless as seconds to date. Dedicated tools cover date to epoch, epoch to date, and epoch to
         <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline"> ISO 8601 </a>
         for standards‑compliant outputs.
       </p>
@@ -49,7 +49,7 @@ export const About = () => {
       <p className="text-gray-700 dark:text-gray-300">
         Time data should be simple. Instead of wrestling with off‑by‑one‑hour bugs or unit confusion,
         <a href="https://epoch-tools.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline"> Epoch Tools </a>
-        gives you a clean set of utilities like epoch converter, unix time converter, timestamp to date, and milliseconds to date that are accurate, fast, and easy to integrate.
+        gives you a clean set of utilities like epoch time converter, unix timestamp converter, timestamp to date, and milliseconds to date that are accurate, fast, and easy to integrate.
       </p>
 
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mt-8 mb-2">What's next?</h2>
@@ -59,7 +59,7 @@ export const About = () => {
 
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mt-8 mb-2">Who we are?</h2>
       <p className="text-gray-700 dark:text-gray-300">
-        <a href="https://epoch-tools.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Epoch Tools</a> is crafted by an indie builder focused on small, reliable developer utilities. The goal: eliminate time formatting friction so you can ship faster.
+        <a href="https://epoch-tools.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Epoch Tools</a> or unix timestamp converter is crafted by an indie builder focused on small, reliable developer utilities. The goal: eliminate time formatting friction so you can ship faster.
       </p>
 
       {/* TODO: Create a professional looking email address to put in contact us */}

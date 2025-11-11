@@ -39,6 +39,11 @@ export const convertFromMilliseconds = (ms: number, targetUnit: TimeUnit): numbe
 };
 
 export const formatDateTimeString = (date: Date, isUTC: boolean = false): string => {
+  // Check if date is valid
+  if (isNaN(date.getTime())) {
+    return '';
+  }
+  
   if (isUTC) {
     return date.toISOString().replace('T', ' ').replace('Z', ' UTC');
   }
@@ -86,7 +91,7 @@ export const getCurrentEpoch = (unit: TimeUnit): number => {
 };
 
 export const getTimezones = (): string[] => {
-  return Intl.supportedValuesOf('timeZone');
+  return (Intl as any).supportedValuesOf('timeZone');
 };
 
 export const cleanEpochInput = (input: string): string => {

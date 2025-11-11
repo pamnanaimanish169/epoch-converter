@@ -85,9 +85,21 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
 
   const getUTCDate = (): string => {
     if (!epochInput || error) return '';
-    const numEpoch = parseFloat(epochInput);
+    const cleanedInput = cleanEpochInput(epochInput);
+    const numEpoch = parseFloat(cleanedInput);
+    
+    if (isNaN(numEpoch) || !isValidEpoch(numEpoch)) {
+      return '';
+    }
+    
     const ms = normalizeToMilliseconds(numEpoch, detectedUnit);
     const date = new Date(ms);
+    
+    // Check if date is valid before formatting
+    if (isNaN(date.getTime())) {
+      return '';
+    }
+    
     return formatDateTimeString(date, true);
   };
 
@@ -95,8 +107,11 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <RefreshCw className="w-5 h-5 text-blue-500" />
-        Bi-Directional Converter
+        Epoch & Unix Timestamp Converter
       </h2>
+      {/* <p className="text-gray-700 dark:text-gray-300 mb-6">
+        Converts an epoch/unix timestamp into a human-readable date. It also lets you do the inverse, i.e., converts a human-readable date into an epoch/unix timestamp. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for developers, data analysts, and anyone working with time-based data.
+      </p> */}
 
       <div className="space-y-6">
         <div>
