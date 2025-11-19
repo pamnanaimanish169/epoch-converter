@@ -33,7 +33,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 </Link>
               </li>
               <li>
-                <Link to="/blogs" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="https://blog.epoch-tools.com/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <BookMarked className="w-4 h-4" />
                   <span>Blogs</span>
                 </Link>
