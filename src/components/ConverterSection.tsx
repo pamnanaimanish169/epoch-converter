@@ -107,7 +107,7 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <RefreshCw className="w-5 h-5 text-blue-500" />
-        Epoch & Unix Timestamp Converter
+        Bi-Directional Converter
       </h2>
       {/* <p className="text-gray-700 dark:text-gray-300 mb-6">
         Converts an epoch/unix timestamp into a human-readable date. It also lets you do the inverse, i.e., converts a human-readable date into an epoch/unix timestamp. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for developers, data analysts, and anyone working with time-based data.
@@ -209,7 +209,7 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
 
         <div className="space-y-4">
           <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <p className="text-xs text-gray-500 dark:text-gray-500">Epoch & Unix Timestamp Converter converts an epoch/unix timestamp into a human-readable date. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for anyone working with time-based data.</p>
+            <p className="text-xs text-gray-500 dark:text-gray-500">The Unix & Epoch Timestamp Converter converts an epoch/unix timestamp into a human-readable date. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for anyone working with time-based data.</p>
           </div>
         </div>
 

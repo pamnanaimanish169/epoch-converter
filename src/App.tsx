@@ -12,6 +12,7 @@ import useSEO from './hooks/useSEO';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
+import Countdown from './pages/Countdown';
 
 function App() {
   const { theme, toggleTheme } = useTheme();
@@ -25,7 +26,7 @@ function App() {
   // SEO configuration based on current route
   const getSEOConfig = () => {
     const defaultConfig = {
-      siteName: 'Epoch & Unix Timestamp Converter',
+      siteName: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
       locale: 'en_US',
       image: `${baseUrl}/epoch-converter-logo.png`,
     };
@@ -34,7 +35,7 @@ function App() {
       case '/about':
         return {
           ...defaultConfig,
-          title: 'About - Epoch & Unix Timestamp Converter | Unix Timestamp Tool',
+          title: 'About - Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
           description: 'Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter that turns raw timestamps into clear, readable dates.',
           keywords: 'epoch converter, unix timestamp, about epoch tools, time converter, developer tools',
           url: currentUrl,
@@ -42,7 +43,7 @@ function App() {
           structuredData: {
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "About Epoch & Unix Timestamp Converter",
+            "headline": "About - Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
             "description": "Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter.",
             "author": {
               "@type": "Organization",
@@ -57,7 +58,7 @@ function App() {
       case '/faq':
         return {
           ...defaultConfig,
-          title: 'FAQ - Epoch & Unix Timestamp Converter | Frequently Asked Questions',
+          title: 'FAQ - Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
           description: 'Frequently asked questions about epoch converter, unix timestamp conversion, ISO 8601 format, and time zone handling.',
           keywords: 'epoch converter FAQ, unix timestamp questions, epoch time help, timestamp converter FAQ',
           url: currentUrl,
@@ -80,7 +81,7 @@ function App() {
       case '/week-number':
         return {
           ...defaultConfig,
-          title: 'Current Week Number Today - Week Number Calculator | ISO 8601',
+          title: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Week Number Calculator',
           description: 'Find out what week number it is today. Get the current ISO 8601 week number instantly with copy functionality. Free week number calculator tool.',
           keywords: 'week number, current week number, week number today, ISO week number, week calculator, what week is it',
           url: currentUrl,
@@ -99,10 +100,41 @@ function App() {
             }
           }
         };
+      case '/countdown': {
+        // Get target epoch from URL params for dynamic title
+        const targetParam = new URLSearchParams(location.search).get("target");
+        const Y2038_TIMESTAMP = 2147483647;
+        const targetEpoch = targetParam ? parseInt(targetParam, 10) : Y2038_TIMESTAMP;
+        const formattedTarget = isNaN(targetEpoch) 
+          ? Y2038_TIMESTAMP.toLocaleString() 
+          : targetEpoch.toLocaleString();
+        
+        return {
+          ...defaultConfig,
+          title: `Countdown to Unix Time ${formattedTarget} | Unix Timestamp Converter`,
+          description: 'Countdown in seconds to any Unix timestamp. Real-time countdown calculator for Unix epoch time with GMT display. Free countdown tool for developers.',
+          keywords: 'unix countdown, epoch countdown, timestamp countdown, unix time countdown, countdown calculator, epoch timer',
+          url: currentUrl,
+          type: 'website' as const,
+          structuredData: {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": `Countdown to Unix Time ${formattedTarget}`,
+            "description": "Countdown in seconds to any Unix timestamp with real-time updates",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        };
+      }
       default:
         return {
           ...defaultConfig,
-          title: 'Epoch & Unix Timestamp Converter - Unix Timestamp Tool | Convert Time Online',
+          title: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Convert Time Online',
           description: 'Convert Unix timestamps to human-readable time and back instantly. Free online epoch converter with real-time conversion, batch processing, and developer tools.',
           keywords: 'epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools',
           url: currentUrl,
@@ -110,7 +142,7 @@ function App() {
           structuredData: {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "Epoch & Unix Timestamp Converter",
+            "name": "Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
             "description": "Convert Unix timestamps to human-readable time and back instantly",
             "applicationCategory": "UtilityApplication",
             "operatingSystem": "Any",
@@ -166,6 +198,7 @@ function App() {
                 }
               />
               <Route path="/week-number" element={<WeekNumber onCopy={handleCopy} />} />
+              <Route path="/countdown" element={<Countdown onCopy={handleCopy} />} />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
             </Routes>

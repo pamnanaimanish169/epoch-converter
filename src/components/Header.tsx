@@ -15,12 +15,12 @@ export const Header = () => {
           <div className="flex items-center gap-3">
             <img
               src={Logo}
-              alt="Epoch & Unix Timestamp Converter"
+              alt="Unix Timestamp Converter"
               className="w-12 h-12 md:w-16 md:h-16 rounded-lg object-contain"
             />
             <div>
               <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-                Epoch & Unix Timestamp Converter
+                EpochTools
               </h1>
               {/* <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mt-1">
                 Convert Unix timestamps to human-readable time and back instantly
