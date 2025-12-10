@@ -6,90 +6,250 @@ export const ConverterSectionSEOContent = () => {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <BookOpen className="w-6 h-6 text-blue-500" />
-        Free Online Unix Timestamp Converter for Humans
+        Free Online Unix Timestamp Converter (Seconds & Milliseconds)
       </h1>
 
       <div className="space-y-6 text-gray-700 dark:text-gray-300">
         <section>
           <p className="mb-4 leading-relaxed">
-            Epoch Tools delivers instant Unix timestamp conversions, timezone handling, and precise date calculations, especially for backend developers, data analysts, and SREs. It doesn't matter if you're debugging cryptic log entries in production, validating timestamps in API payloads, or normalizing time across distributed systems worldwide; these tools help eliminate the need for temporary solutions that create chaos.
-          </p>
-          <p className="mb-4 leading-relaxed">
-            Built with developer workflows in mind, every tool on our site processes data client-side only. This helps us ensure your privacy while maintaining the speed, which in turn helps you get more accurate results without worrying about sensitive logs or queries.
-          </p>
-          <p className="leading-relaxed">
-            In contemporary applications, time is omnipresent, from event logging in Node.js apps, recording user actions in MySQL or PostgreSQL databases, to synchronizing microservices across different global areas. Unix timestamps (often referred to as <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline">epoch time</Link>) indicate the count of milliseconds/seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-          </p>
-          <p className="mt-4 leading-relaxed">
-            The format is compact, sortable, and timezone-friendly, making it ideal for machine-readable data. But the same is not the case with humans. Humans struggle to interpret raw numbers like 1733832800 without appropriate conversion tools. Our site offers you instant bidirectional conversion between epoch and human-readable dates, adjusting for timezone offsets and daylight saving adjustments.
+            Convert Unix timestamps (epoch time) to human-readable dates instantly, accurately and reliably. Our tools auto-detects seconds, milliseconds, microseconds while asjusting for DST (Daylight Saving Time) variations.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            All Essential and Critical Time Utilities in One Place
+            What is Unix Timestamp / Epoch Time?
           </h2>
           <p className="mb-4 leading-relaxed">
-            Our collection covers the most common timestamp tasks you'll encounter daily. Start with the core Unix Timestamp Converter: paste an epoch value (in seconds or milliseconds), select your target timezone like IST or UTC, and see the exact date, time, and offset displayed side-by-side. Need the reverse? Enter a date and generate the corresponding Unix timestamp for use in cron jobs, JWT expiration fields, or database inserts. The UTC to Local Timezone Switcher handles complex shifts, factoring in DST rules for regions like Europe or North America, while the Date Difference Calculator computes exact intervals—down to milliseconds—for SLA monitoring or user session analysis.
+            Unix timestamp, popularly also known as epoch time, represents the number of <strong className="text-gray-900 dark:text-white">seconds</strong> (or milliseconds) elapsed since <strong className="text-gray-900 dark:text-white">January 1, 1970, 00:00:00 UTC</strong> (the Unix epoch). This consistent format powers most modern applications bec because it's:
           </p>
-          <p className="mb-4 leading-relaxed">
-            Our collection of tools covers the most common timestamp tasks you'll encounter daily. Starting with the core Unix Timestamp Converter, where you just have to paste your epoch value (in seconds or milliseconds), and see the exact date, time, and offset displayed side-by-side along with your timezone.
-          </p>
-          <p className="mb-4 leading-relaxed">
-            Apart from these basic conversions, these tools go beyond this and often help everyone by auto-detecting seconds and milliseconds as you type. Normalizing this helps prevent off-by-1000 factor errors that can cascade into your production. And the good thing is that you can do all of this without ever needing to sign up. Just paste and convert, as easy as it can get.
-          </p>
-          <ul className="space-y-2 list-disc list-inside ml-2">
-            <li><strong className="text-gray-900 dark:text-white">Unix Timestamp ↔ Human Date Converter:</strong> Supports seconds, milliseconds, microseconds; outputs ISO 8601, RFC 2822, or custom formats.</li>
+          <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
+            <li><strong className="text-gray-900 dark:text-white">Compact</strong>: Single integer (e.g., <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">1733832800</code>) vs long and expansive strings</li>
+            <li><strong className="text-gray-900 dark:text-white">Sortable</strong>: Naturally ordered by chronology</li>
+            <li><strong className="text-gray-900 dark:text-white">Timezone-agnostic</strong>: UTC-based mostly to avoid locale specific confusion.</li>
+            <li><strong className="text-gray-900 dark:text-white">Universal</strong>: Supported by every popular programming language and databases</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Solve Real-World Time Bugs Fast
-          </h2>
           <p className="mb-4 leading-relaxed">
-            Time-related failures can account for a large amount of production-level bugs: timezone drifts, off-by-one-hour reports, DST transitions (between summer and winter) breaking scheduled cron jobs, or mismatched precision leading to incorrect analytics, thus causing loss in business.
+            <strong className="text-gray-900 dark:text-white">Example</strong>: <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">1733832800</code> = <strong className="text-gray-900 dark:text-white">December 10, 2025, 00:00:00 UTC</strong><br />
+            <strong className="text-gray-900 dark:text-white">In IST</strong>: December 10, 2025, 05:30:00 (+5:30 offset)
           </p>
           <p className="mb-4 leading-relaxed">
-            Epoch tools can help you uncover these bugs timely manner by providing side-by-side comparisons and validation. Backend developers can verify the accuracy by pasting a timestamp from the ELK stack or Cloudwatch Logs and instantly getting a human-readable date.
+            <strong className="text-gray-900 dark:text-white">Precision variants</strong>:
           </p>
-          <p className="mb-4 leading-relaxed">
-            While our tools are as interactive as they can get, we also have something from Data engineers. The logic here mirrors what you'd implemented in the ETL pipelines (e.g., Pandas to_datetime or SQL STR_TO_DATE with accurate timezone conversion). Common pitfalls like assuming UTC everywhere or ignoring leap seconds (where they matter the most) are properly highlighted with appropriate warnings and examples, helping you build more robust systems while keeping a sane head.
-          </p>
-          <ul className="space-y-2 list-disc list-inside ml-2">
-            <li><strong className="text-gray-900 dark:text-white">Backend logging & API timestamp validation:</strong> Spot mismatches between server-generated epochs and client-side rendering.</li>
-            <li><strong className="text-gray-900 dark:text-white">Database record normalization (MySQL, Postgres):</strong> Generate correct INSERT values; debug queries like SELECT UNIX_TIMESTAMP(created_at).</li>
-            <li><strong className="text-gray-900 dark:text-white">Incident correlation across global services:</strong> Align timestamps from Kubernetes pods in different regions.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Why Developers Rely on Epoch Tools
-          </h2>
-          <p className="mb-4 leading-relaxed">
-            Developers often find it difficult to deal with insane bugs like timezone drifts in multi-region apps, incorrect cron scheduling, payloads against specs, normalizing ETL data, or correlating with monitoring alerts. Our tools at Epoch Tools help the developers deal with these bugs like it's nothing.
-          </p>
-          <p className="mb-4 leading-relaxed">
-            Time-related failures are notoriously hard to reproduce and often surface only in production, making it difficult to catch them at an early stage. Epoch Tools address this head-on by providing instant validation, turning opaque epoch numbers into actionable insights.
-          </p>
-          <p className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Pro tip:</strong> Use the converter to generate UTC-safe cron epochs for Terraform schedules or GitHub Actions workflows.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Get Started Today
-          </h2>
-          <p className="mb-4 leading-relaxed">
-            Jump into the <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline">Unix Timestamp Converter</Link> for your next debugging session. Explore the full suite via navigation, and bookmark for daily use.
-          </p>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            Last updated: December 10, 2025.
-          </p>
+          <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+            <code>
+              1733832800     = Seconds (Unix standard)
+              <br />
+              1733832800000  = Milliseconds (JavaScript Date.now())
+              <br />
+              1733832800000000 = Microseconds (some databases)
+              <br />
+            </code>
+          </pre>
           <p className="leading-relaxed">
-            Questions? Check out our <a href="https://blog.epoch-tools.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">blog here</a>.
+            <strong className="text-gray-900 dark:text-white">Paste any epoch value above</strong> to see it converted instantly with timezone support.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Convert Epoch to Human-Readable Date
+          </h2>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">Our converter handles all formats</strong>:
+          </p>
+          <ol className="space-y-2 list-decimal list-inside ml-2 mb-4">
+            <li><strong className="text-gray-900 dark:text-white">Input</strong>: Paste epoch value (auto-detects seconds vs milliseconds)</li>
+            {/* <li><strong className="text-gray-900 dark:text-white">Select</strong>: Target timezone (500+ options: UTC, IST, PST, CET, etc.)</li> */}
+            <li><strong className="text-gray-900 dark:text-white">Output</strong>: Human readable date + multiple formats (ISO 8601, RFC 2822, custom)</li>
+          </ol>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">Live example</strong>:
+          </p>
+          <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+            <code>Input: 1733832800 (seconds)
+              <br />
+              Output:
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;UTC: 2025-12-10 00:00:00
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;IST: 2025-12-10 05:30:00 (+05:30)
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;PST: 2025-12-09 16:00:00 (-08:00)</code>
+          </pre>
+          <p className="leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">Reverse conversion</strong>: Enter any date → Get reliable Unix timestamp accurately.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Common Developer Use Cases
+          </h2>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              API Payload Validation
+            </h3>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">JWT tokens </strong>unlike others use <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">iat</code> (issued at), <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">exp</code> (expiration), <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">nbf</code> (not before) as Unix timestamps. You can validate the claims instantlty and accurately using:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>JWT payload: {`{ "exp": 1733919200 }`}
+                <br />
+                Convert → Dec 11, 2025 00:00:00 UTC ✓ Valid (future)</code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">REST APIs</strong> with custom timestamp fields:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>{`{
+  "created_at": 1733832800,  
+  "updated_at": 1733836400
+}`}</code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              Spot issues: Is <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">created_at</code> older than <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">updated_at</code>? Correct timezone? Seconds vs ms?
+            </p>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">Copy-paste validation</strong>:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>{`// Validate API response
+const timestamp = 1733832800;
+const date = new Date(timestamp * 1000); // Convert seconds to ms
+console.log(date.toISOString()); // 2025-12-10T00:00:00.000Z`}</code>
+            </pre>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              Database Timestamp Storage
+            </h3>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">MySQL</strong>:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>{`-- Store as Unix timestamp (INT)
+INSERT INTO events (timestamp) VALUES (1733832800);
+
+-- Convert back
+SELECT FROM_UNIXTIME(timestamp) FROM events;`}</code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">PostgreSQL</strong>:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>{`-- TIMESTAMPTZ stores UTC
+INSERT INTO logs (event_time) VALUES ('2025-12-10 00:00:00'::timestamptz);
+
+-- Extract epoch
+SELECT EXTRACT(EPOCH FROM event_time)::bigint;`}</code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">Common errors fixed</strong>:
+            </p>
+            <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
+              <li>Mixing <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">TIMESTAMP</code> (no TZ) vs <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">TIMESTAMPTZ</code> (UTC)</li>
+              <li>Seconds vs milliseconds storage</li>
+              <li>Regional server time vs UTC normalization
+              </li>
+            </ul>
+            <p className="leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">Use our converter</strong> to generate correct <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">INSERT</code> values and debug <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">SELECT</code> queries.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Timezone & DST Handling
+          </h2>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">India Standard Time (IST)</strong>: Fixed <strong className="text-gray-900 dark:text-white">+05:30</strong> offset (no DST since 1945)<br />
+            <strong className="text-gray-900 dark:text-white">Pacific Time (PST/PDT)</strong>: Switches <strong className="text-gray-900 dark:text-white">-08:00 → -07:00</strong> during DST
+          </p>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">Example DST impact</strong>:
+          </p>
+          <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+            <code>Epoch: 1640995200 (Jan 1, 2022)
+              <br />
+              PST: 2021-12-31 16:00:00 (-08:00, no DST)
+              <br />
+PDT: 2021-12-31 17:00:00 (-07:00, DST active)</code>
+          </pre>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">Production debugging</strong>:
+          </p>
+          <ol className="space-y-2 list-decimal list-inside ml-2 mb-4">
+            <li><strong className="text-gray-900 dark:text-white">Paste log timestamp</strong></li>
+            <li><strong className="text-gray-900 dark:text-white">Select investigator's timezone</strong></li>
+            <li><strong className="text-gray-900 dark:text-white">See exact local time</strong> → Faster incident correlation</li>
+          </ol>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">Code fix</strong> (Node.js):
+          </p>
+          <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+            <code>{`// Wrong: Local time
+const local = Date.now();
+
+// Correct: UTC epoch (seconds)
+const utcEpoch = Math.floor(Date.now() / 1000);`}</code>
+          </pre>
+          <p className="leading-relaxed">
+            Our tool catches time inconsistencies by making<strong className="text-gray-900 dark:text-white"> side-by-side comparisons </strong> in realtime.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">What timezone does Unix timestamp use?</strong><br />
+                Always <strong className="text-gray-900 dark:text-white">UTC</strong>. The epoch counts seconds since January 1 1970 00:00:00 UTC regardless of what the server or client location is.
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Seconds or milliseconds?</strong><br />   
+                  &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Seconds</strong>: Unix standard (<code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">date +%s</code>), APIs, databases<br />
+                  &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Milliseconds</strong>: JavaScript (<code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">Date.now()</code>), some logs<br />
+                <strong className="text-gray-900 dark:text-white">Our tool auto-detects</strong> based on value range saving your precious time and resources.
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Will it work after Year 2038?</strong><br />
+                <strong className="text-gray-900 dark:text-white">The Y2038 problem </strong> only affects the older 32-bit systems which causes them to overflow after Jan 19, 2038 03:14:07 UTC exactly. <strong className="text-gray-900 dark:text-white">Modern day 64-bit systems</strong> solves this problem and handles the timestamp till the year 292 billion.
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Is it safe for production data?</strong><br />
+                We convert the epoch timestamp <strong className="text-gray-900 dark:text-white">100% at the client-side</strong> which leaves No data in your browser.
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Free forever?</strong><br />
+                <strong className="text-gray-900 dark:text-white">Yes</strong>. No signups, no limits, ad-supported.
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">Related tools</strong>: <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline">Unix Timestamp ↔ Date Converter</Link> | <Link to="/week-number" className="text-blue-600 dark:text-blue-400 hover:underline">Week Number</Link> | <Link to="/countdown" className="text-blue-600 dark:text-blue-400 hover:underline">Countdown to "Epochalypse" (Y2038)</Link>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="pt-4 border-t border-gray-200 dark:border-gray-700">
+          <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+            By Manish Pamnani, Full-Stack Developer | Last Updated: Dec 10, 2025
           </p>
         </section>
       </div>

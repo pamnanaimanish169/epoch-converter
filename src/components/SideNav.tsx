@@ -65,7 +65,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
               <li>
                 <Link to="/countdown" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Timer className="w-4 h-4" />
-                  <span>Countdown</span>
+                  <span>Countdown to "Epochalypse" (Y2038)</span>
                 </Link>
               </li>
             </ul>

@@ -167,6 +167,7 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
                 placeholder="YYYY-MM-DD HH:MM:SS"
                 className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-white transition-colors"
                 aria-label="Local date time input"
+                readOnly
               />
             </div>
             <button

@@ -283,12 +283,7 @@ export const Countdown = ({ onCopy: _onCopy }: CountdownProps) => {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h1 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <Clock className="w-6 h-6 text-blue-500" />
-        Countdown to Unix Time {targetEpoch.toLocaleString()}
-        {targetEpoch === Y2038_TIMESTAMP && (
-          <span className="text-sm font-normal text-gray-600 dark:text-gray-400 ml-2">
-            (Y2038 Problem)
-          </span>
-        )}
+        Countdown to "Epochalypse" (Y2038 Problem)
       </h1>
 
       {/* Main Countdown Display */}

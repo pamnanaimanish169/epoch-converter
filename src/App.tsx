@@ -134,8 +134,8 @@ function App() {
       default:
         return {
           ...defaultConfig,
-          title: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Convert Time Online',
-          description: 'Convert Unix timestamps to human-readable time and back instantly. Free online epoch converter with real-time conversion, batch processing, and developer tools.',
+          title: 'Free Online Unix Timestamp Converter - Epoch to Date (UTC/IST) | Epoch Tools',
+          description: 'Convert Unix timestamps to human-readable dates instantly. Supports seconds, milliseconds, UTC/IST timezones, and DST. Free developer tool with code examples and timezone debugging.',
           keywords: 'epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools',
           url: currentUrl,
           type: 'website' as const,
