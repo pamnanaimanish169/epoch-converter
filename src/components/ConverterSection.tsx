@@ -109,9 +109,6 @@ export const ConverterSection = ({ onCopy }: ConverterSectionProps) => {
         <RefreshCw className="w-5 h-5 text-blue-500" />
         Bi-Directional Converter
       </h2>
-      {/* <p className="text-gray-700 dark:text-gray-300 mb-6">
-        Converts an epoch/unix timestamp into a human-readable date. It also lets you do the inverse, i.e., converts a human-readable date into an epoch/unix timestamp. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for developers, data analysts, and anyone working with time-based data.
-      </p> */}
 
       <div className="space-y-6">
         <div>

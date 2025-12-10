@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Header } from './components/Header';
 import { ConverterSection } from './components/ConverterSection';
-import { CurrentEpochClock } from './components/CurrentEpochClock';
 import { WeekNumber } from './components/WeekNumber';
 import { Footer } from './components/Footer';
 import { SideNav } from './components/SideNav';
 import { ToastContainer } from './components/Toast';
+import { ConverterSectionSEOContent } from './components/ConverterSectionSEOContent';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import useSEO from './hooks/useSEO';
@@ -192,8 +192,8 @@ function App() {
                 element={
                   <>
                     <ConverterSection onCopy={handleCopy} />
-                    <CurrentEpochClock onCopy={handleCopy} />
-                    {/* Reserved for future tools/components */}
+                    <ConverterSectionSEOContent />
+                    {/* <CurrentEpochClock onCopy={handleCopy} /> */}
                   </>
                 }
               />
