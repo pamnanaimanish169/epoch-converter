@@ -141,10 +141,12 @@ function App() {
           type: 'website' as const,
           structuredData: {
             "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
+            "@type": "WebPage",
+            "name": "Free Online Unix Timestamp Converter - Epoch to Date (UTC/IST) | Epoch Tools",
             "description": "Convert Unix timestamps to human-readable time and back instantly",
-            "applicationCategory": "UtilityApplication",
+            "datePublished": "2025-01-01",
+            "dateModified": "2025-12-10",
+            "author": {"@type": "Person", "name": "Manish Pamnani"},          
             "operatingSystem": "Any",
             "offers": {
               "@type": "Offer",

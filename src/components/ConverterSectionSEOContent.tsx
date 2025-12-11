@@ -21,7 +21,7 @@ export const ConverterSectionSEOContent = () => {
             What is Unix Timestamp / Epoch Time?
           </h2>
           <p className="mb-4 leading-relaxed">
-            Unix timestamp, popularly also known as epoch time, represents the number of <strong className="text-gray-900 dark:text-white">seconds</strong> (or milliseconds) elapsed since <strong className="text-gray-900 dark:text-white">January 1, 1970, 00:00:00 UTC</strong> (the Unix epoch). This consistent format powers most modern applications bec because it's:
+            <a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Unix time</a>, popularly also known as epoch time, represents the number of <strong className="text-gray-900 dark:text-white">seconds</strong> (or milliseconds) elapsed since <strong className="text-gray-900 dark:text-white">January 1, 1970, 00:00:00 UTC</strong> (the Unix epoch). This consistent format powers most modern applications bec because it's:
           </p>
           <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
             <li><strong className="text-gray-900 dark:text-white">Compact</strong>: Single integer (e.g., <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">1733832800</code>) vs long and expansive strings</li>
@@ -170,6 +170,9 @@ SELECT EXTRACT(EPOCH FROM event_time)::bigint;`}</code>
             <strong className="text-gray-900 dark:text-white">Pacific Time (PST/PDT)</strong>: Switches <strong className="text-gray-900 dark:text-white">-08:00 → -07:00</strong> during DST
           </p>
           <p className="mb-4 leading-relaxed">
+            Here is a complete list of <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">IANA time zones.</a>
+          </p>
+          <p className="mb-4 leading-relaxed">
             <strong className="text-gray-900 dark:text-white">Example DST impact</strong>:
           </p>
           <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
@@ -217,7 +220,7 @@ const utcEpoch = Math.floor(Date.now() / 1000);`}</code>
               <p className="mb-2 leading-relaxed">
                 <strong className="text-gray-900 dark:text-white">Seconds or milliseconds?</strong><br />   
                   &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Seconds</strong>: Unix standard (<code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">date +%s</code>), APIs, databases<br />
-                  &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Milliseconds</strong>: JavaScript (<code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">Date.now()</code>), some logs<br />
+                  &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Milliseconds</strong>: JavaScript (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline"><code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">Date.now()</code></a>), some logs<br />
                 <strong className="text-gray-900 dark:text-white">Our tool auto-detects</strong> based on value range saving your precious time and resources.
               </p>
             </div>
