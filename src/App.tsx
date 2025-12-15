@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { SideNav } from './components/SideNav';
 import { ToastContainer } from './components/Toast';
 import { ConverterSectionSEOContent } from './components/ConverterSectionSEOContent';
+import { WeekNumberSEOSection } from './components/WeekNumberSEOSection';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import useSEO from './hooks/useSEO';
@@ -199,7 +200,15 @@ function App() {
                   </>
                 }
               />
-              <Route path="/week-number" element={<WeekNumber onCopy={handleCopy} />} />
+              <Route
+                path="/week-number"
+                element={
+                  <>
+                    <WeekNumber onCopy={handleCopy} />
+                    <WeekNumberSEOSection />
+                  </>
+                }
+              />
               <Route path="/countdown" element={<Countdown onCopy={handleCopy} />} />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
