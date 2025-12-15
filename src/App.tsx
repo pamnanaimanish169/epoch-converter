@@ -82,23 +82,20 @@ function App() {
       case '/week-number':
         return {
           ...defaultConfig,
-          title: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Week Number Calculator',
-          description: 'Find out what week number it is today. Get the current ISO 8601 week number instantly with copy functionality. Free week number calculator tool.',
+          title: 'Week Number Calculator – Current Week & ISO Week of the Year | Epoch Tools',
+          description: 'Find the current week number (ISO 8601) and calculate the week of the year for any date with this free week number calculator.',
           keywords: 'week number, current week number, week number today, ISO week number, week calculator, what week is it',
           url: currentUrl,
           type: 'website' as const,
           structuredData: {
             "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Current Week Number Calculator",
-            "description": "Find out what week number it is today using ISO 8601 standard",
-            "applicationCategory": "UtilityApplication",
-            "operatingSystem": "Any",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            }
+            "@type": "WebPage",
+            "name": "Week Number Calculator – Current Week & ISO Week of the Year",
+            "description": "Find the current week number (ISO 8601) and calculate the week of the year for any date.",
+            "url": currentUrl,
+            "datePublished": "2025-12-10",
+            "dateModified": "2025-12-10",
+            "author": { "@type": "Person", "name": "Manish Pamnani" }
           }
         };
       case '/countdown': {
@@ -135,7 +132,7 @@ function App() {
       default:
         return {
           ...defaultConfig,
-          title: 'Free Online Unix Timestamp Converter - Epoch to Date (UTC/IST)',
+          title: 'Free Online Unix Timestamp Converter - Epoch to Date (UTC/IST) | Epoch Tools',
           description: 'Convert Unix timestamps to human-readable dates instantly. Supports seconds, milliseconds, UTC/IST timezones, and DST. Free developer tool with code examples and timezone debugging.',
           keywords: 'epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools',
           url: currentUrl,
