@@ -7,6 +7,7 @@ import { SideNav } from './components/SideNav';
 import { ToastContainer } from './components/Toast';
 import { ConverterSectionSEOContent } from './components/ConverterSectionSEOContent';
 import { WeekNumberSEOSection } from './components/WeekNumberSEOSection';
+import { CountdownSEOSection } from './components/CountdownSEOSection';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import useSEO from './hooks/useSEO';
@@ -109,8 +110,8 @@ function App() {
         
         return {
           ...defaultConfig,
-          title: `Countdown to Unix Time ${formattedTarget} | Unix Timestamp Converter`,
-          description: 'Countdown in seconds to any Unix timestamp. Real-time countdown calculator for Unix epoch time with GMT display. Free countdown tool for developers.',
+          title: `Y2038 Countdown – Time Left Until the Year 2038 Problem (Epochalypse) | Epoch Tools`,
+          description: 'Watch the live Y2038 countdown and see how much time is left until the Year 2038 problem (Epochalypse). Learn how Unix time overflows on 32‑bit systems and what it means for your code.',
           keywords: 'unix countdown, epoch countdown, timestamp countdown, unix time countdown, countdown calculator, epoch timer',
           url: currentUrl,
           type: 'website' as const,
@@ -206,7 +207,15 @@ function App() {
                   </>
                 }
               />
-              <Route path="/countdown" element={<Countdown onCopy={handleCopy} />} />
+              <Route
+                path="/countdown"
+                element={
+                  <>
+                    <Countdown onCopy={handleCopy} />
+                    <CountdownSEOSection />
+                  </>
+                }
+              />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
             </Routes>

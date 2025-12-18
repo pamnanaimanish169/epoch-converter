@@ -281,8 +281,8 @@ export const Countdown = ({ onCopy: _onCopy }: CountdownProps) => {
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
-      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-        <Clock className="w-6 h-6 text-blue-500" />
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+        {/* <Clock className="w-6 h-6 text-blue-500" /> */}
         Countdown to "Epochalypse" (Y2038 Problem)
       </h1>
 

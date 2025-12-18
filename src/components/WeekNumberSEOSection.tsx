@@ -1,11 +1,9 @@
-import { BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const WeekNumberSEOSection = () => {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-        <BookOpen className="w-6 h-6 text-purple-500" />
         Week Number Calculator - Current Week Number Today
       </h1>
 
