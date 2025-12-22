@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Header } from './components/Header';
 import { ConverterSection } from './components/ConverterSection';
 import { WeekNumber } from './components/WeekNumber';
@@ -11,26 +12,79 @@ import { CountdownSEOSection } from './components/CountdownSEOSection';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import useSEO from './hooks/useSEO';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useSearchParams } from 'react-router-dom';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
 import Countdown from './pages/Countdown';
+import i18n from './i18n';
 
 function App() {
+  const { t } = useTranslation();
   const { theme, toggleTheme } = useTheme();
   const { toasts, addToast, removeToast } = useToast();
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Handle language from URL parameter
+  useEffect(() => {
+    const langParam = searchParams.get('lang');
+    if (langParam === 'zh-CN' || langParam === 'zh') {
+      if (i18n.language !== 'zh-CN') {
+        i18n.changeLanguage('zh-CN');
+      }
+    } else if (langParam === 'en') {
+      if (i18n.language !== 'en') {
+        i18n.changeLanguage('en');
+      }
+    } else {
+      // If no lang parameter, check if we should set default
+      // This ensures the URL reflects the current language
+      const currentLang = i18n.language;
+      if (currentLang && !searchParams.has('lang')) {
+        // Optionally set the lang param to match current language
+        // Uncomment if you want URL to always show current language
+        // setSearchParams({ lang: currentLang === 'zh-CN' ? 'zh-CN' : 'en' }, { replace: true });
+      }
+    }
+  }, [searchParams, setSearchParams]);
 
   // Base URL for the site (update this with your actual domain)
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   const currentUrl = `${baseUrl}${location.pathname}`;
+  
+  // Get current language
+  const currentLang = i18n.language;
+  const langParam = searchParams.get('lang');
+  const isChinese = currentLang === 'zh-CN' || langParam === 'zh-CN' || langParam === 'zh';
 
   // SEO configuration based on current route
   const getSEOConfig = () => {
+    // Determine canonical URL based on language and route
+    const getCanonicalUrl = () => {
+      if (location.pathname === '/') {
+        // For home page, include lang parameter for Chinese, clean URL for English
+        if (isChinese) {
+          return `${baseUrl}/?lang=zh-CN`;
+        }
+        return `${baseUrl}/`;
+      }
+      // For other pages, properly handle query parameters
+      if (isChinese) {
+        const url = new URL(currentUrl);
+        url.searchParams.set('lang', 'zh-CN');
+        return url.toString();
+      }
+      // For English, return clean URL without lang parameter (but preserve other params if needed)
+      const url = new URL(currentUrl);
+      url.searchParams.delete('lang');
+      return url.toString();
+    };
+
     const defaultConfig = {
       siteName: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
-      locale: 'en_US',
+      locale: isChinese ? 'zh_CN' : 'en_US',
       image: `${baseUrl}/epoch-converter-logo.png`,
+      canonical: getCanonicalUrl(),
     };
 
     switch (location.pathname) {
@@ -174,9 +228,9 @@ function App() {
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
-      addToast('Copied to clipboard!', 'success');
+      addToast(t('toast.copied'), 'success');
     }).catch(() => {
-      addToast('Failed to copy', 'error');
+      addToast(t('toast.copyFailed'), 'error');
     });
   };
 

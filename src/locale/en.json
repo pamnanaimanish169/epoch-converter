@@ -1,0 +1,312 @@
+{
+  "header": {
+    "title": "EpochTools",
+    "alt": "Unix Timestamp Converter"
+  },
+  "footer": {
+    "local": "Local",
+    "utc": "UTC",
+    "copyright": "© {{year}} Epoch Tools."
+  },
+  "navigation": {
+    "pages": "Pages",
+    "tools": "Tools",
+    "home": "Home",
+    "about": "About",
+    "faq": "FAQ",
+    "blogs": "Blogs",
+    "toggleTheme": "Toggle theme",
+    "epochConverter": "Epoch Converter",
+    "weekNumber": "Week Number",
+    "countdown": "Countdown to \"Epochalypse\" (Y2038)"
+  },
+  "converter": {
+    "title": "Bi-Directional Converter",
+    "epochLabel": "Unix Epoch Timestamp",
+    "epochPlaceholder": "Enter epoch timestamp",
+    "copyEpoch": "Copy epoch timestamp",
+    "setNow": "Set to current time",
+    "localDateTime": "Local Date & Time",
+    "localPlaceholder": "YYYY-MM-DD HH:MM:SS",
+    "copyLocal": "Copy local date time",
+    "utcDateTime": "UTC Date & Time",
+    "copyUtc": "Copy UTC date time",
+    "description": "The Unix & Epoch Timestamp Converter converts an epoch/unix timestamp into a human-readable date. This tool also displays the current epoch/unix timestamp in both seconds and milliseconds, and is a valuable resource for anyone working with time-based data.",
+    "error": {
+      "invalid": "Invalid epoch value",
+      "outOfRange": "Epoch value out of valid range (1900-2100)",
+      "invalidDate": "Invalid date format"
+    }
+  },
+  "weekNumber": {
+    "title": "Week Number Today",
+    "weekNumberToday": "Week Number Today",
+    "isoWeekNumber": "ISO Week Number",
+    "isoDescription": "Week numbers follow the {link} standard, where week 1 is the week containing the first Thursday of the year.",
+    "isoLink": "ISO 8601"
+  },
+  "countdown": {
+    "title": "Countdown to \"Epochalypse\" (Y2038 Problem)",
+    "countdownTo": "Countdown to {{epoch}}, {{date}}",
+    "timeSince": "Time since {{date}}",
+    "error": {
+      "timestampTooLarge": "Timestamp too large for calculation",
+      "exceedsYear2100": "Timestamp exceeds year 2100 limit",
+      "invalidTimestamp": "Invalid Unix timestamp",
+      "pleaseEnter": "Please enter a timestamp",
+      "numericOnly": "Please enter only numeric characters",
+      "tooLarge": "Number is too large. Maximum safe value is 9,007,199,254,740,991",
+      "invalidNumber": "Please enter a valid number",
+      "exceedsLimit": "Number exceeds safe integer limit (max: {{max}})",
+      "exceedsYear2100Limit": "Timestamp exceeds year 2100 limit (max: {{max}})",
+      "positiveOnly": "Please enter a positive number",
+      "invalidDate": "Invalid Unix timestamp - resulting date is invalid"
+    }
+  },
+  "about": {
+    "title": "What we do?",
+    "description": "{link} is a fast, privacy-first epoch time converter and unix timestamp converter that turns raw timestamps into clear, readable dates. It also lets you convert timestamp to date, convert date back to epoch, and format results for APIs in seconds.",
+    "builtForClarity": "Built for clarity",
+    "clarityDescription": "Whether you have seconds, milliseconds, microseconds, or nanoseconds, the epoch time converter detects the right precision so milliseconds to date is as effortless as seconds to date. Dedicated tools cover date to epoch, epoch to date, and epoch to {isoLink} for standards‑compliant outputs.",
+    "standardsWeFollow": "Standards we follow",
+    "standardsDescription": "{unixLink} represents the number of seconds elapsed since the Unix epoch, a widely used baseline in computing for logging and data interchange. For interoperable strings, outputs support {isoLink}, including UTC with the \"Z\" designator and numeric UTC offsets like +05:30, which makes integration with APIs and webhooks straightforward.",
+    "timezones": "Time zones that just work",
+    "timezonesDescription": "The site supports all IANA time zones {tzLink}, so you can render timestamps in precise regions like America/New York, Europe/London, Asia/Kolkata, or Australia/Sydney with correct daylight saving rules. Under the hood, conversions normalize to UTC and then format in your selected zone, ensuring consistency across {localesLink} and environments.",
+    "privateByDesign": "Private by design, fast by default",
+    "privateDescription": "Conversions run in the browser for speed and privacy, so your data doesn't leave your device. The UI stays minimal, with instant copy buttons, keyboard shortcuts, and accessible color contrast for uninterrupted workflows.",
+    "developerFriendly": "Developer‑friendly features",
+    "developerFeatures": [
+      "Copy‑ready snippets to drop into scripts and docs for your convenience.",
+      "A lightweight user interface for epoch to date and date to epoch when you need it the most.",
+      "Flexible formatting presets: epoch to {isoLink}, {rfcLink}, and localized date/time outputs."
+    ],
+    "whyWeBuilt": "Why we built this?",
+    "whyDescription": "Time data should be simple. Instead of wrestling with off‑by‑one‑hour bugs or unit confusion, {link} gives you a clean set of utilities like epoch time converter, unix timestamp converter, timestamp to date, and milliseconds to date that are accurate, fast, and easy to integrate.",
+    "whatsNext": "What's next?",
+    "nextDescription": "Upcoming utilities include week number today, date/time difference, hex timestamp converter, bulk conversions, and richer localization options. If a feature would save you time, suggest it. We iterate quickly.",
+    "whoWeAre": "Who we are?",
+    "whoDescription": "{link} or unix timestamp converter is crafted by an indie builder focused on small, reliable developer utilities. The goal: eliminate time formatting friction so you can ship faster.",
+    "backToHome": "← Back to Home"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "whatIsEpoch": {
+      "question": "What is an epoch time converter and how do I use it?",
+      "answer": "An {link} is a tool that helps you convert Unix timestamp (also called {epochLink}) into readable dates or times, and vice versa. Just enter your value to instantly see the result in your local time zone or UTC."
+    },
+    "convertTimestamp": {
+      "question": "How do I convert a timestamp to date?",
+      "answer": "Just paste your timestamp (be it in seconds, milliseconds, microseconds, or nanoseconds) into the {link}, and instantly get a human-readable date and time for logging, APIs, or debugging outputs. It's that easy."
+    },
+    "whatIsEpochTime": {
+      "question": "What is epoch time?",
+      "answer": "{link}, often called Unix time/timestamp, is the count of elapsed seconds since 00:00:00 Coordinated Universal Time on 1 January 1970, excluding leap seconds; it provides a simple numeric representation of time for computers and APIs."
+    },
+    "epochVsUnix": {
+      "question": "What's the difference between epoch time and Unix time?",
+      "answer": "Both {epochLink} and {unixLink} refer to the same system, counting seconds since January 1, 1970 UTC (i.e. Unix epoch or the Epoch time); you can use a unix timestamp converter or epoch time converter for identical results."
+    },
+    "millisecondsToDate": {
+      "question": "How can I convert milliseconds to date and what is \"current millis\"?",
+      "answer": "Use the {link} for timestamps in milliseconds (13 digits); you can also check the current millis counter to get the exact epoch time in milliseconds right now—useful for programming and event logs."
+    },
+    "iso8601": {
+      "question": "What is ISO 8601 format?",
+      "answer": "{link} is an international standard for writing dates and times using unambiguous, machine‑readable strings like 2025‑11‑05T10:27:11Z (UTC), supporting time zones and precise timestamps for reliable data exchange in software systems."
+    },
+    "epochToIso": {
+      "question": "How do I convert epoch time to ISO 8601 format?",
+      "answer": "Just select {link}, paste your Unix timestamp, and you'll get an output like \"2025-11-05T10:27:11Z\" ready for use in APIs, webhooks, or any international data standards."
+    },
+    "dateToEpoch": {
+      "question": "How do I convert a date or time to epoch (Unix timestamp)?",
+      "answer": "Enter any date and time in standard or ISO formats, and the {link} will instantly provide you with the Unix timestamp in seconds, milliseconds, or your chosen unit."
+    },
+    "backToHome": "← Back to Home"
+  },
+  "batchConverter": {
+    "title": "Batch Converter",
+    "label": "Paste Multiple Timestamps (one per line)",
+    "placeholder": "1234567890\n1609459200\n1640995200",
+    "convertAll": "Convert All",
+    "clear": "Clear all",
+    "epoch": "Epoch",
+    "dateTime": "DateTime",
+    "exportCsv": "Export as CSV",
+    "error": {
+      "invalidNumber": "Invalid number",
+      "conversionFailed": "Conversion failed"
+    },
+    "status": {
+      "success": "Success"
+    }
+  },
+  "codeSnippets": {
+    "title": "Developer Tools",
+    "javascript": "JavaScript",
+    "python": "Python",
+    "sql": "SQL",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "mockApi": "Mock API Endpoint",
+    "exampleEndpoint": "Example endpoint format for your application"
+  },
+  "toast": {
+    "copied": "Copied to clipboard!",
+    "copyFailed": "Failed to copy",
+    "close": "Close notification"
+  },
+  "seo": {
+    "converter": {
+      "title": "Free Online Unix Timestamp Converter (Seconds & Milliseconds)",
+      "description": "Convert Unix timestamps (epoch time) to human-readable dates instantly, accurately and reliably. Our tools auto-detects seconds, milliseconds, microseconds while asjusting for DST (Daylight Saving Time) variations.",
+      "intro": "Convert Unix timestamps (epoch time) to human-readable dates instantly, accurately and reliably. Our tools auto-detects seconds, milliseconds, microseconds while adjusting for DST (Daylight Saving Time) variations.",
+      "whatIsUnix": "What is Unix Timestamp / Epoch Time?",
+      "whatIsUnixDescription": "Unix time, popularly also known as epoch time, represents the number of **seconds** (or milliseconds) elapsed since **January 1, 1970, 00:00:00 UTC** (the Unix epoch). This consistent format powers most modern applications because it's:",
+      "whatIsUnixAdvantages": "This consistent format powers most modern applications because it's:",
+      "compact": "Compact",
+      "compactDescription": "Single integer (e.g., 1733832800) vs long and expansive strings",
+      "sortable": "Sortable",
+      "sortableDescription": "Naturally ordered by chronology",
+      "timezoneAgnostic": "Timezone-agnostic",
+      "timezoneAgnosticDescription": "UTC-based mostly to avoid locale specific confusion.",
+      "universal": "Universal",
+      "universalDescription": "Supported by every popular programming language and databases",
+      "example": "Example",
+      "exampleDescription": "1733832800 = December 10, 2025, 00:00:00 UTC",
+      "inIst": "In IST",
+      "inIstDescription": "December 10, 2025, 05:30:00 (+5:30 offset)",
+      "precisionVariants": "Precision variants",
+      "precisionVariantsCode": "1733832800     = Seconds (Unix standard)\n1733832800000  = Milliseconds (JavaScript Date.now())\n1733832800000000 = Microseconds (some databases)",
+      "pasteAnyEpoch": "Paste any epoch value above to see it converted instantly with timezone support.",
+      "convertEpoch": "Convert Epoch to Human-Readable Date",
+      "convertEpochDescription": "Our converter handles all formats:",
+      "howToUse": "Our converter handles all formats:",
+      "input": "Input",
+      "inputDescription": "Paste epoch value (auto-detects seconds vs milliseconds)",
+      "output": "Output",
+      "outputDescription": "Human readable date + multiple formats (ISO 8601, RFC 2822, custom)",
+      "liveExample": "Live example",
+      "liveExampleCode": "Input: 1733832800 (seconds)\nOutput:\n    UTC: 2025-12-10 00:00:00\n    IST: 2025-12-10 05:30:00 (+05:30)\n    PST: 2025-12-09 16:00:00 (-08:00)",
+      "reverseConversion": "Reverse conversion: Enter any date → Get reliable Unix timestamp accurately.",
+      "commonUseCases": "Common Developer Use Cases",
+      "apiPayloadValidation": "API Payload Validation",
+      "apiPayloadValidationDescription": "Many REST APIs widely use **Unix timestamps** as fields, for example:",
+      "restApiValidation": "With our universal **Unix timestamp converter**, you can instantly verify:",
+      "restApiValidationList": [
+        "Whether `created_at` is indeed earlier than `updated_at`, ensuring production-grade data validity",
+        "Whether those oddly-named fields (like mtime, ctime, atime) actually represent seconds or milliseconds, saving you time from wasting effort on irrelevant fields.",
+        "Whether the actual business time in the current timezone is reasonable, or exceeds expected working hours."
+      ],
+      "jwtValidation": "JWT Token Validation",
+      "jwtValidationDescription": "JWTs use `iat` (issued at), `exp` (expiration), and `nbf` (not before) as standard Unix timestamps. For example:",
+      "jwtValidationBenefits": "Enter this value into our **timestamp conversion tool** to easily confirm:",
+      "jwtValidationBenefitsList": [
+        "Whether the converted date is a valid future date rather than expired.",
+        "Whether the actual time across timezones is consistent, helping frontend/backend collaborative debugging, increasing efficiency by 10x."
+      ],
+      "codeValidation": "Code-Level Quick Validation (JavaScript)",
+      "codeValidationCode": "// Validate Unix timestamp in API response\nconst timestamp = 1733832800;            // Convert to milliseconds\nconst date = new Date(timestamp * 1000);\nconsole.log(date.toISOString());         // 2025-12-10T00:00:00.000Z",
+      "codeValidationDescription": "By cross-checking with an online **timestamp converter** (like [ours](https://epoch-tools.com)), you can quickly determine whether an abnormal backend has returned accurate timezone information, saving valuable energy and time to focus on developing human-friendly and bug-free content.",
+      "jwtTokens": "JWT tokens",
+      "jwtTokensDescription": "JWT tokens unlike others use iat (issued at), exp (expiration), nbf (not before) as Unix timestamps. You can validate the claims instantlty and accurately using:",
+      "jwtExampleCode": "{ \"exp\": 1733919200 }",
+      "restApis": "REST APIs",
+      "restApisDescription": "REST APIs with custom timestamp fields:",
+      "restApiExampleCode": "{\n  \"created_at\": 1733832800,\n  \"updated_at\": 1733836400\n}",
+      "restApiSpotIssues": "Spot issues: Is created_at older than updated_at? Correct timezone? Seconds vs ms?",
+      "copyPasteValidation": "Copy-paste validation",
+      "copyPasteValidationCode": "// Validate API response\nconst timestamp = 1733832800;\nconst date = new Date(timestamp * 1000); // Convert seconds to ms\nconsole.log(date.toISOString()); // 2025-12-10T00:00:00.000Z",
+      "databaseTimestampStorage": "Database Timestamp Storage",
+      "databaseTimestampStorageDescription": "Using **timestamps** correctly avoids timezone confusion—the inability to determine which timezone a value represents, one-hour errors—and prevents the same event from appearing as different dates on calendars in different regions.",
+      "mysql": "MySQL",
+      "mysqlCode": "-- Store as Unix timestamp (INT)\nINSERT INTO events (timestamp) VALUES (1733832800);\n\n-- Convert back\nSELECT FROM_UNIXTIME(timestamp) FROM events;",
+      "postgresql": "PostgreSQL",
+      "postgresqlCode": "-- TIMESTAMPTZ stores UTC\nINSERT INTO logs (event_time) VALUES ('2025-12-10 00:00:00'::timestamptz);\n\n-- Extract epoch\nSELECT EXTRACT(EPOCH FROM event_time)::bigint;",
+      "commonErrorsFixed": "Common pitfalls include (but are not limited to): confusing similar-looking keywords `TIMESTAMP` vs `TIMESTAMPTZ`, confusing annoying seconds vs milliseconds units, or inadvertently using server local time instead of UTC time.",
+      "useOurConverter": "An online **Unix timestamp converter** can quickly generate correct values for database `INSERT` statements while helping debug any `SELECT` query results.",
+      "timezoneDst": "Timezone & DST Handling",
+      "timezoneDstDescription": "**Timezone conversion** is the most common pitfall in cross-regional systems. Our tool automatically handles this issue. Examples below:",
+      "ist": "India Standard Time (IST)",
+      "istDescription": "Fixed +05:30 offset (no DST since 1945)",
+      "pstPdt": "Pacific Time (PST/PDT)",
+      "pstPdtDescription": "Switches -08:00 → -07:00 during DST",
+      "ianaTimeZones": "You can also check the complete [IANA time zone list](https://www.iana.org/time-zones) for more timezone details.",
+      "exampleDstImpact": "Example (with DST effect)",
+      "exampleDstImpactCode": "Epoch value: `1640995200` (2022-01-01)\nPST: 2021-12-31 16:00:00 (-08:00, no DST)\nPDT: 2021-12-31 17:00:00 (-07:00, DST active)",
+      "productionDebugging": "To easily convert **Unix timestamps** in production environments and avoid timezone confusion, use our tool with the following steps:",
+      "productionDebuggingSteps": [
+        "Paste the Unix timestamp value from your precious logs into this tool",
+        "The system will automatically detect your timezone based on browser settings",
+        "Compare the returned value with the actual local time to verify or confirm the value."
+      ],
+      "codeFix": "Example of debugging time errors in production (Node.js)",
+      "codeFixSubtitle": "(Node.js)",
+      "codeFixCode": "// Wrong: Local time\nconst local = Date.now();\n\n// Correct: UTC epoch (seconds)\nconst utcEpoch = Math.floor(Date.now() / 1000);",
+      "codeFixDescription": "Using our tool enables precise **timestamp conversion** and multi-timezone comparison, revealing inconsistencies between local time and UTC time in real-time debugging, saving you valuable time.",
+      "sideBySideComparisons": "Our tool catches time inconsistencies by making side-by-side comparisons in realtime.",
+      "faq": "Frequently Asked Questions",
+      "whatTimezone": "What timezone does Unix timestamp use?",
+      "whatTimezoneAnswer": "Always UTC. The epoch counts seconds since January 1 1970 00:00:00 UTC regardless of what the server or client location is.",
+      "secondsOrMilliseconds": "Seconds or milliseconds?",
+      "secondsOrMillisecondsAnswer": "• Seconds: Unix standard (date +%s), APIs, databases\n• Milliseconds: JavaScript (Date.now()), some logs\nOur tool auto-detects based on value range saving your precious time and resources.",
+      "willItWorkAfter2038": "Will it work after Year 2038?",
+      "willItWorkAfter2038Answer": "The Y2038 problem only affects the older 32-bit systems which causes them to overflow after Jan 19, 2038 03:14:07 UTC exactly. Modern day 64-bit systems solves this problem and handles the timestamp till the year 292 billion.",
+      "isItSafe": "Is it safe for production data?",
+      "isItSafeAnswer": "We convert the epoch timestamp 100% at the client-side which leaves No data in your browser.",
+      "freeForever": "Free forever?",
+      "freeForeverAnswer": "Yes. No signups, no limits, ad-supported.",
+      "relatedTools": "Related Tools & Author Information",
+      "relatedToolsDescription": "If you want to read more about **Handling Different Timezones with Epoch Time**, **Epoch Time Converter** or **Unix Timestamps**, you can read them here:",
+      "relatedToolsLinks": [
+        "[Epoch Time Converter: The Developer's Guide to Converting Unix Timestamps](https://blog.epoch-tools.com/posts/epoch-time-conversion/)",
+        "[How to work with Unix Timestamps in JavaScript: A practical guide](https://blog.epoch-tools.com/posts/unix-timestamp-in-javascript/)",
+        "[Handling Timezones with Epoch Time: UTC, IST, and Beyond](https://blog.epoch-tools.com/posts/handling-timezones-with-epoch/)"
+      ],
+      "authorFooter": "By Manish Pamnani, Full-Stack Developer\nLast Updated: Dec 10, 2025"
+    },
+    "weekNumber": {
+      "title": "Week Number Calculator - Current Week Number Today",
+      "whatIsWeekNumber": "What Is a Week Number?",
+      "whatIsWeekNumberDescription": "A week number, as the name suggests, tells you which numbered week of the year the current date falls in. A value like {week50} simply means that you're at the 50th week of the current calendar year (Just 2 weeks from the new year!). Knowing which week you're in currently helps you plan your upcoming sprints, set deadlines, and align reports and events by {weekOfYear} instead of specific calendar dates or months.",
+      "iso8601Standard": "Even a simple thing like week numbers has different ways or standards to be defined, the most widely used being the {iso8601}. Under this standard, week 1 is the week that contains the first Thursday of the year, and all the weeks start from Monday. That's the reason (apparently a weird one) that some dates at the beginning of January still belong to the last ISO week of the previous year, like some late dates of December previous year can still be counted as week 1 of the next year.",
+      "howToUse": "How to Use the Week Number Calculator",
+      "howToUseDescription": "The week number calculator is designed to give you the {currentWeekNumber} at a glance, while also letting you check the week of the year for any other date.",
+      "isoVsRegular": "ISO Week Number vs Regular Week",
+      "isoVsRegularDescription": "Not every calendar treats weeks the same way. Some teams simply call the first week of January \"week 1\" regardless of which day of the week it starts on. {isoWeekNumbering}",
+      "commonUseCases": "Common Use Cases",
+      "projectPlanning": "Project Planning & Sprints",
+      "financeReporting": "Finance, Reporting & Analytics",
+      "faq": "Frequently Asked Questions",
+      "currentWeekNumberToday": "What is the current week number today?",
+      "whatIsIsoWeekNumber": "What is the ISO week number?",
+      "whyDoesWeekNumberNotMatch": "Why does the week number sometimes not match the calendar month?",
+      "canIGetWeekNumberForAnyDate": "Can I get the week number for any date, not just today?",
+      "isWeekNumberBasedOnTimezone": "Is the week number based on my timezone?",
+      "howDoesThisRelate": "How does this relate to your other tools?"
+    },
+    "countdown": {
+      "title": "Countdown to the Year 2038 Problem (Epochalypse)",
+      "description": "Track the live countdown to the {y2038Problem} and see exactly how much time is left until the 32-bit Unix timestamps overflow (precisely at {overflowDate}) and start producing incorrect timestamps. This page helps you understand this phenomenon, also known as {epochalypse}, and why it matters.",
+      "whatIsY2038": "What Is the Year 2038 Problem?",
+      "howItWorks": "How the Y2038 Countdown Works",
+      "relatesToEpoch": "How This Relates to Epoch & Unix Time",
+      "commonUseCases": "Common Use Cases for the Y2038 Countdown",
+      "legacySystemsAudit": "Legacy Systems Audit",
+      "educationTraining": "Education & Training",
+      "monitoringCompliance": "Monitoring & Compliance",
+      "faq": "Frequently Asked Questions About the Year 2038 Problem",
+      "willAllSystemsBreak": "Will all systems break in 2038?",
+      "whatKindsOfSoftware": "What kinds of software/systems are at most risk?",
+      "howCanICheck": "How can I check if my system is affected?",
+      "haveMoreQuestions": "Have more questions about our time tools? Check the {link} for answers."
+    }
+  },
+  "common": {
+    "seconds": "seconds",
+    "milliseconds": "milliseconds",
+    "microseconds": "microseconds",
+    "nanoseconds": "nanoseconds"
+  }
+}
+

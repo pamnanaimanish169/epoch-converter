@@ -1,0 +1,302 @@
+{
+  "header": {
+    "title": "EpochTools",
+    "alt": "Unix时间戳转换器"
+  },
+  "footer": {
+    "local": "本地",
+    "utc": "UTC",
+    "copyright": "© {{year}} Epoch Tools."
+  },
+  "navigation": {
+    "pages": "页面",
+    "tools": "工具",
+    "home": "首页",
+    "about": "关于",
+    "faq": "常见问题",
+    "blogs": "博客",
+    "toggleTheme": "切换主题",
+    "epochConverter": "Epoch转换器",
+    "weekNumber": "周数",
+    "countdown": "倒计时至\"Epochalypse\"（Y2038）"
+  },
+  "converter": {
+    "title": "双向转换器",
+    "epochLabel": "Unix Epoch时间戳",
+    "epochPlaceholder": "输入epoch时间戳",
+    "copyEpoch": "复制epoch时间戳",
+    "setNow": "设置为当前时间",
+    "localDateTime": "本地日期和时间",
+    "localPlaceholder": "YYYY-MM-DD HH:MM:SS",
+    "copyLocal": "复制本地日期时间",
+    "utcDateTime": "UTC日期和时间",
+    "copyUtc": "复制UTC日期时间",
+    "description": "Unix和Epoch时间戳转换器将epoch/unix时间戳转换为人类可读的日期。此工具还以秒和毫秒显示当前epoch/unix时间戳，是处理基于时间数据的任何人的宝贵资源。",
+    "error": {
+      "invalid": "无效的epoch值",
+      "outOfRange": "Epoch值超出有效范围（1900-2100）",
+      "invalidDate": "无效的日期格式"
+    }
+  },
+  "weekNumber": {
+    "title": "今天的周数",
+    "weekNumberToday": "今天的周数",
+    "isoWeekNumber": "ISO周数",
+    "isoDescription": "周数遵循{link}标准，其中第1周是包含一年中第一个星期四的那一周。",
+    "isoLink": "ISO 8601"
+  },
+  "countdown": {
+    "title": "倒计时至\"Epochalypse\"（Y2038问题）",
+    "countdownTo": "倒计时至{{epoch}}，{{date}}",
+    "timeSince": "自{{date}}以来的时间",
+    "error": {
+      "timestampTooLarge": "时间戳太大，无法计算",
+      "exceedsYear2100": "时间戳超过2100年限制",
+      "invalidTimestamp": "无效的Unix时间戳",
+      "pleaseEnter": "请输入时间戳",
+      "numericOnly": "请输入仅数字字符",
+      "tooLarge": "数字太大。最大安全值为9,007,199,254,740,991",
+      "invalidNumber": "请输入有效数字",
+      "exceedsLimit": "数字超过安全整数限制（最大值：{{max}}）",
+      "exceedsYear2100Limit": "时间戳超过2100年限制（最大值：{{max}}）",
+      "positiveOnly": "请输入正数",
+      "invalidDate": "无效的Unix时间戳 - 生成的日期无效"
+    }
+  },
+  "about": {
+    "title": "我们做什么？",
+    "description": "{link}是一个快速、隐私优先的epoch时间转换器和unix时间戳转换器，可将原始时间戳转换为清晰、可读的日期。它还允许您将时间戳转换为日期，将日期转换回epoch，并在几秒钟内为API格式化结果。",
+    "builtForClarity": "为清晰而构建",
+    "clarityDescription": "无论您有秒、毫秒、微秒还是纳秒，epoch时间转换器都能检测到正确的精度，因此毫秒到日期与秒到日期一样轻松。专用工具涵盖日期到epoch、epoch到日期以及epoch到{isoLink}，以符合标准的输出。",
+    "standardsWeFollow": "我们遵循的标准",
+    "standardsDescription": "{unixLink}表示自Unix epoch以来经过的秒数，这是计算中用于日志记录和数据交换的广泛使用的基准。对于可互操作的字符串，输出支持{isoLink}，包括带有\"Z\"指示符的UTC和数字UTC偏移（如+05:30），这使得与API和webhook的集成变得简单。",
+    "timezones": "时区正常工作",
+    "timezonesDescription": "该网站支持所有IANA时区{tzLink}，因此您可以在精确区域（如America/New York、Europe/London、Asia/Kolkata或Australia/Sydney）中呈现时间戳，并具有正确的夏令时规则。在底层，转换首先标准化为UTC，然后在您选择的区域中格式化，确保跨{localesLink}和环境的一致性。",
+    "privateByDesign": "设计私密，默认快速",
+    "privateDescription": "转换在浏览器中运行，以实现速度和隐私，因此您的数据不会离开您的设备。UI保持最小化，具有即时复制按钮、键盘快捷键和可访问的颜色对比度，以实现不间断的工作流程。",
+    "developerFriendly": "开发者友好功能",
+    "developerFeatures": [
+      "可复制的代码片段，方便您直接放入脚本和文档。",
+      "当您最需要时，用于epoch到日期和日期到epoch的轻量级用户界面。",
+      "灵活的格式预设：epoch到{isoLink}、{rfcLink}和本地化的日期/时间输出。"
+    ],
+    "whyWeBuilt": "我们为什么构建这个？",
+    "whyDescription": "时间数据应该简单。与其与相差一小时的错误或单位混淆作斗争，{link}为您提供了一套干净的工具，如epoch时间转换器、unix时间戳转换器、时间戳到日期和毫秒到日期，这些工具准确、快速且易于集成。",
+    "whatsNext": "下一步是什么？",
+    "nextDescription": "即将推出的实用程序包括今天的周数、日期/时间差、十六进制时间戳转换器、批量转换和更丰富的本地化选项。如果某个功能可以节省您的时间，请建议它。我们快速迭代。",
+    "whoWeAre": "我们是谁？",
+    "whoDescription": "{link}或unix时间戳转换器由专注于小型、可靠的开发者实用程序的独立构建者制作。目标：消除时间格式化的摩擦，以便您可以更快地发布。",
+    "backToHome": "← 返回首页"
+  },
+  "faq": {
+    "title": "常见问题",
+    "whatIsEpoch": {
+      "question": "什么是epoch时间转换器以及如何使用它？",
+      "answer": "{link}是一个帮助您将Unix时间戳（也称为{epochLink}）转换为可读日期或时间的工具，反之亦然。只需输入您的值，即可立即在本地时区或UTC中查看结果。"
+    },
+    "convertTimestamp": {
+      "question": "如何将时间戳转换为日期？",
+      "answer": "只需将您的时间戳（无论是秒、毫秒、微秒还是纳秒）粘贴到{link}中，即可立即获得用于日志记录、API或调试输出的人类可读日期和时间。就这么简单。"
+    },
+    "whatIsEpochTime": {
+      "question": "什么是epoch时间？",
+      "answer": "{link}，通常称为Unix时间/时间戳，是自1970年1月1日00:00:00协调世界时以来经过的秒数，不包括闰秒；它为计算机和API提供了简单的时间数字表示。"
+    },
+    "epochVsUnix": {
+      "question": "epoch时间和Unix时间有什么区别？",
+      "answer": "{epochLink}和{unixLink}都指同一系统，计算自1970年1月1日UTC以来的秒数（即Unix epoch或Epoch时间）；您可以使用unix时间戳转换器或epoch时间转换器获得相同的结果。"
+    },
+    "millisecondsToDate": {
+      "question": "如何将毫秒转换为日期，什么是\"当前毫秒\"？",
+      "answer": "使用{link}处理毫秒时间戳（13位数字）；您还可以检查当前毫秒计数器以获取当前精确的毫秒epoch时间——对编程和事件日志很有用。"
+    },
+    "iso8601": {
+      "question": "什么是ISO 8601格式？",
+      "answer": "{link}是使用明确、机器可读字符串（如2025‑11‑05T10:27:11Z（UTC））编写日期和时间的国际标准，支持时区和精确时间戳，以便在软件系统中进行可靠的数据交换。"
+    },
+    "epochToIso": {
+      "question": "如何将epoch时间转换为ISO 8601格式？",
+      "answer": "只需选择{link}，粘贴您的Unix时间戳，您将获得类似\"2025-11-05T10:27:11Z\"的输出，可直接用于API、webhook或任何国际数据标准。"
+    },
+    "dateToEpoch": {
+      "question": "如何将日期或时间转换为epoch（Unix时间戳）？",
+      "answer": "以标准或ISO格式输入任何日期和时间，{link}将立即为您提供秒、毫秒或您选择的单位的Unix时间戳。"
+    },
+    "backToHome": "← 返回首页"
+  },
+  "batchConverter": {
+    "title": "批量转换器",
+    "label": "粘贴多个时间戳（每行一个）",
+    "placeholder": "1234567890\n1609459200\n1640995200",
+    "convertAll": "全部转换",
+    "clear": "清除全部",
+    "epoch": "Epoch",
+    "dateTime": "日期时间",
+    "exportCsv": "导出为CSV",
+    "error": {
+      "invalidNumber": "无效数字",
+      "conversionFailed": "转换失败"
+    },
+    "status": {
+      "success": "成功"
+    }
+  },
+  "codeSnippets": {
+    "title": "开发者工具",
+    "javascript": "JavaScript",
+    "python": "Python",
+    "sql": "SQL",
+    "copy": "复制",
+    "copied": "已复制！",
+    "mockApi": "模拟API端点",
+    "exampleEndpoint": "应用程序的示例端点格式"
+  },
+  "toast": {
+    "copied": "已复制到剪贴板！",
+    "copyFailed": "复制失败",
+    "close": "关闭通知"
+  },
+  "seo": {
+    "converter": {
+      "title": "免费在线Unix时间戳转换器（秒与毫秒）",
+      "intro": "使用我们的**Unix时间戳转换器**，可即时将**Unix时间戳**转换为清晰易读的日期和时间。本工具支持精确到秒、毫秒及微秒的转换精度，并能处理夏令时（DST），极具开发者友好性。\n\n除传统**Unix时间戳**外，本工具兼容常见**Linux时间戳**格式，助您高效处理跨系统日志。",
+      "whatIsUnix": "什么是Unix时间戳/纪元时间？",
+      "whatIsUnixDescription": "**Unix时间戳（Unix时间）**又称**纪元时间**，表示自1970年1月1日00:00:00 UTC（Unix纪元）起经过的秒数（或毫秒数）。其结构简单，在现代应用中成为高度灵活且无处不在的标准。",
+      "whatIsUnixAdvantages": "该格式具备以下优势：",
+      "compact": "紧凑",
+      "compactDescription": "用单个整数（如`1733832800`）表示时间，比冗长的日期字符串更节省存储空间且更高效传输。",
+      "sortable": "可排序",
+      "sortableDescription": "数字天然具备时间顺序排序特性，便于处理时间线、日志排序等任务。",
+      "timezoneAgnostic": "时区无关",
+      "timezoneAgnosticDescription": "统一基于UTC标准，避免区域时差造成的混淆。",
+      "universal": "普遍性",
+      "universalDescription": "几乎所有编程语言、数据库和操作系统（包括**Linux时间戳**）均原生支持。",
+      "example": "示例",
+      "exampleDescription": "`1733832800` = 2025-12-10 00:00:00 UTC",
+      "inIst": "在IST时区",
+      "inIstDescription": "2025-12-10 05:30:00 (UTC+05:30时区)",
+      "precisionVariants": "时间转换的常见精度变体",
+      "precisionVariantsCode": "1733832800        = 秒级精度（标准Unix时间戳）\n1733832800000  = 毫秒精度（JavaScript `Date.now()`，常见于**毫秒级转换**场景）\n1733832800000000 = 微秒精度（部分数据库和日志系统采用）",
+      "pasteAnyEpoch": "输入任意上述**时间戳**值，本工具将即时转换并显示目标时区结果。",
+      "convertEpoch": "将纪元时间转换为可读日期",
+      "convertEpochDescription": "我们的**时间戳转换器**能轻松将秒/毫秒/微秒格式的时间戳转换为可读日期，并同时显示多种格式。",
+      "howToUse": "使用方法如下：",
+      "input": "输入",
+      "inputDescription": "粘贴任意数值型**时间戳**（秒/毫秒/微秒格式均可，工具自动识别）。",
+      "output": "输出",
+      "outputDescription": "生成符合人类阅读习惯的日期/时间，同时提供多种标准格式（包括但不限于ISO 8601、RFC 2822等），可直接用于生产环境。",
+      "liveExample": "实时示例",
+      "liveExampleCode": "输入：`1733832800`（秒制）\n输出：\n  UTC：2025-12-10 00:00:00\n  IST：2025-12-10 05:30:00 (+05:30)\n  PST：2025-12-09 16:00:00 (-08:00)",
+      "reverseConversion": "通过专为开发者定制的即时精准转换功能，优化您的调试与日志记录工作流程。",
+      "commonUseCases": "常见开发场景：",
+      "apiPayloadValidation": "验证API请求与响应",
+      "apiPayloadValidationDescription": "许多REST API广泛使用**Unix时间戳**作为字段，例如：",
+      "restApiExampleCode": "{\n  \"created_at\": 1733832800,\n  \"updated_at\": 1733836400\n}",
+      "restApiValidation": "借助我们的通用**Unix时间戳转换器**，您可即时验证：",
+      "restApiValidationList": [
+        "`created_at`是否确实早于`updated_at`，确保生产级数据的有效性",
+        "那些名称突兀的字段（如 mtime、ctime、atime）是否实际表示秒或毫秒，避免您浪费时间在无关字段上。",
+        "当前时区内的实际业务时间是否合理，或是否超出预期工作时间范围。"
+      ],
+      "jwtValidation": "JWT 令牌验证",
+      "jwtValidationDescription": "JWT 中的 `iat`（签发时间）、`exp`（过期时间）和 `nbf`（非后退时间）均采用标准 Unix 时间戳。例如：",
+      "jwtExampleCode": "{ \"exp\": 1733919200 }",
+      "jwtValidationBenefits": "将此值输入我们的**时间戳转换工具**，可轻松确认：",
+      "jwtValidationBenefitsList": [
+        "转换后的日期是否为有效未来日期而非过期日期。",
+        "跨时区实际时间是否一致，助力前端/后端协同调试，使效率提升10倍。"
+      ],
+      "codeValidation": "代码级快速验证（JavaScript）",
+      "codeValidationCode": "// 验证API响应中的Unix时间戳\nconst timestamp = 1733832800;            // 转换为毫秒制\nconst date = new Date(timestamp * 1000);\nconsole.log(date.toISOString());         // 2025-12-10T00:00:00.000Z",
+      "codeValidationDescription": "通过与在线**时间戳转换器**（如[我们的](https://epoch-tools.com)）交叉核对，可快速判断异常后端是否返回了准确无误的时区信息，从而节省宝贵精力与时间，专注于开发人性化且零缺陷的内容。",
+      "databaseTimestampStorage": "数据库中的时间戳存储",
+      "databaseTimestampStorageDescription": "正确使用**时间戳**可避免时区混乱——即无法确定值所代表的时区、时差一小时的错误——并防止同一事件在不同地区日历上显示为不同日期。",
+      "mysql": "MySQL示例",
+      "mysqlCode": "-- 以Unix时间戳（INT类型）存储\nINSERT INTO events (timestamp) VALUES (1733832800);\n\n-- 转换为可读时间格式\nSELECT FROM_UNIXTIME(timestamp) FROM events;",
+      "postgresql": "PostgreSQL示例",
+      "postgresqlCode": "-- 使用TIMESTAMPTZ (UTC)\nINSERT INTO logs (event_time) VALUES ('2025-12-10 00:00:00'::timestamptz);\n\n-- 提取Unix时间戳\nSELECT EXTRACT(EPOCH FROM event_time)::bigint;",
+      "commonErrorsFixed": "常见陷阱包括（但不限于）：混淆外观相似的关键词`TIMESTAMP`与`TIMESTAMPTZ`、混淆恼人的秒与毫秒单位，或无意中使用服务器本地时间而非UTC时间。",
+      "useOurConverter": "在线**Unix时间戳转换器**可快速生成适用于数据库`INSERT`语句的正确值，同时协助调试任何`SELECT`查询结果。",
+      "timezoneDst": "时区转换与夏令时问题",
+      "timezoneDstDescription": "**时区转换**是跨区域系统中最常见的陷阱。我们的工具可自动处理此问题，以下为示例：",
+      "ist": "印度标准时间 (IST)",
+      "istDescription": "固定为+05:30，无夏令时。",
+      "pstPdt": "太平洋时间 (PST/PDT)",
+      "pstPdtDescription": "夏令时期间从-08:00切换至-07:00。",
+      "ianaTimeZones": "您也可查阅完整的[IANA时区列表](https://www.iana.org/time-zones)获取更多时区详情。",
+      "exampleDstImpact": "示例（含夏令时效应）",
+      "exampleDstImpactCode": "纪元值：`1640995200`（2022-01-01）\nPST：2021-12-31 16:00:00 (-08:00，无夏令时)\nPDT：2021-12-31 17:00:00 (-07:00，夏令时生效)",
+      "productionDebugging": "要在生产级环境中轻松转换**Unix时间戳**且避免时区混淆，可通过以下步骤使用我们的工具：",
+      "productionDebuggingSteps": [
+        "将您珍贵日志中的Unix时间戳值粘贴至本工具",
+        "系统将自动根据浏览器设置检测您的时区",
+        "将返回值与实际本地时间对比以验证或确认该值。"
+      ],
+      "codeFix": "生产环境中调试时间错误的示例（Node.js）",
+      "codeFixCode": "// 错误做法：使用本地时间\nconst local = Date.now();\n\n// 正确做法：使用UTC Unix时间戳（秒）\nconst utcEpoch = Math.floor(Date.now() / 1000);",
+      "codeFixDescription": "使用我们的工具可实现精准的**时间戳转换**与多时区对比，通过实时调试中揭示本地时间与UTC时间的不一致性，从而为您节省宝贵时间。",
+      "faq": "常见问题解答 (FAQ)",
+      "whatTimezone": "Unix 时间戳默认采用哪个时区？",
+      "whatTimezoneAnswer": "始终采用标准协调世界时 (UTC)。无论服务器或客户端位于何处，Unix 时间戳通常都从 1970-01-01 00:00:00 UTC 开始计数秒数。",
+      "secondsOrMilliseconds": "秒还是毫秒？",
+      "secondsOrMillisecondsAnswer": "完全取决于场景：\n\n• 秒：经典Unix标准（`date +%s`），多数API和数据库字段采用此格式。\n• 毫秒：JavaScript `Date.now()`，前端系统常用于日志记录。\n\n本工具可根据数值范围自动区分秒、毫秒和微秒，并执行必要的**毫秒转换**，减少人工时间解读工作。",
+      "willItWorkAfter2038": "2038年后是否有效？",
+      "willItWorkAfter2038Answer": "绝对有效，所谓的\"Y2038问题\"仅影响运行于32位系统的旧式架构。此类系统在2038-01-19 03:14:07 UTC后必然发生溢出，导致日期显示错误。\n\n现代64位系统能够且将持续支持未来数十亿年的时间戳，使**Unix时间戳**在各类日常应用场景中均能完美安全运行。",
+      "isItSafe": "此工具是否适用于生产环境数据？",
+      "isItSafeAnswer": "是的。所有**时间戳转换**均在浏览器本地完成，数据绝不发送至服务器，因此不会泄露任何敏感时间信息。",
+      "freeForever": "是否永久免费？",
+      "freeForeverAnswer": "绝对免费。无任何限制，无需注册。",
+      "relatedTools": "相关工具与作者信息",
+      "relatedToolsDescription": "若需进一步了解**使用纪元时间处理不同时区**、**纪元时间转换器**或**Unix时间戳**，可参阅以下内容：",
+      "relatedToolsLinks": [
+        "[纪元时间转换器：开发者指南——Unix时间戳转换](https://blog.epoch-tools.com/posts/epoch-time-conversion/)",
+        "[JavaScript 中 Unix 时间戳的实战指南](https://blog.epoch-tools.com/posts/unix-timestamp-in-javascript/)",
+        "[基于纪元时间处理时区：UTC、IST 及更多时区](https://blog.epoch-tools.com/posts/handling-timezones-with-epoch/)"
+      ],
+      "authorFooter": "作者：Manish Pamnani，全栈开发者\n最后更新：2025年12月10日"
+    },
+    "weekNumber": {
+      "title": "周数计算器 - 今天的当前周数",
+      "whatIsWeekNumber": "什么是周数？",
+      "whatIsWeekNumberDescription": "周数，顾名思义，告诉您当前日期属于一年中的第几周。像{week50}这样的值仅意味着您处于当前日历年的第50周（距离新年仅2周！）。了解您当前所在的周数有助于您规划即将到来的冲刺、设定截止日期，并按{weekOfYear}而不是特定日历日期或月份来对齐报告和事件。",
+      "iso8601Standard": "即使是周数这样简单的事情，也有不同的定义方式或标准，最广泛使用的是{iso8601}。在此标准下，第1周是包含一年中第一个星期四的那一周，所有周都从星期一开始。这就是为什么（显然很奇怪）一月初的一些日期仍然属于上一年的最后一个ISO周，就像上一年的12月的一些晚些日期仍然可以算作下一年的第1周。",
+      "howToUse": "如何使用周数计算器",
+      "howToUseDescription": "周数计算器旨在让您一目了然地看到{currentWeekNumber}，同时还允许您检查一年中任何其他日期的周数。",
+      "isoVsRegular": "ISO周数与常规周数",
+      "isoVsRegularDescription": "并非每个日历都以相同的方式处理周数。一些团队简单地将一月的第一周称为\"第1周\"，无论它从一周的哪一天开始。{isoWeekNumbering}",
+      "commonUseCases": "常见用例",
+      "projectPlanning": "项目规划和冲刺",
+      "financeReporting": "财务、报告和分析",
+      "faq": "常见问题",
+      "currentWeekNumberToday": "今天的当前周数是什么？",
+      "whatIsIsoWeekNumber": "什么是ISO周数？",
+      "whyDoesWeekNumberNotMatch": "为什么周数有时与日历月份不匹配？",
+      "canIGetWeekNumberForAnyDate": "我可以获取任何日期的周数，而不仅仅是今天吗？",
+      "isWeekNumberBasedOnTimezone": "周数是否基于我的时区？",
+      "howDoesThisRelate": "这与您的其他工具有何关系？"
+    },
+    "countdown": {
+      "title": "倒计时至2038年问题（Epochalypse）",
+      "description": "跟踪{y2038Problem}的实时倒计时，准确查看32位Unix时间戳溢出（精确在{overflowDate}）并开始产生错误时间戳之前还剩多少时间。此页面帮助您了解这一现象，也称为{epochalypse}，以及为什么它很重要。",
+      "whatIsY2038": "什么是2038年问题？",
+      "howItWorks": "Y2038倒计时如何工作",
+      "relatesToEpoch": "这与Epoch和Unix时间的关系",
+      "commonUseCases": "Y2038倒计时的常见用例",
+      "legacySystemsAudit": "遗留系统审计",
+      "educationTraining": "教育和培训",
+      "monitoringCompliance": "监控和合规性",
+      "faq": "关于2038年问题的常见问题",
+      "willAllSystemsBreak": "所有系统都会在2038年崩溃吗？",
+      "whatKindsOfSoftware": "哪些类型的软件/系统风险最大？",
+      "howCanICheck": "如何检查我的系统是否受影响？",
+      "haveMoreQuestions": "对我们的时间工具有更多问题？查看{link}以获取答案。"
+    }
+  },
+  "common": {
+    "seconds": "秒",
+    "milliseconds": "毫秒",
+    "microseconds": "微秒",
+    "nanoseconds": "纳秒"
+  }
+}
+

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Clock } from 'lucide-react';
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -27,11 +29,11 @@ export const Footer = () => {
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
               <Clock className="w-4 h-4" />
-              <span className="font-mono">Local: {formatTime(currentTime)}</span>
+              <span className="font-mono">{t('footer.local')}: {formatTime(currentTime)}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
               <Clock className="w-4 h-4" />
-              <span className="font-mono">UTC: {formatTime(currentTime, true)}</span>
+              <span className="font-mono">{t('footer.utc')}: {formatTime(currentTime, true)}</span>
             </div>
           </div>
 
@@ -51,7 +53,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-4 text-center text-xs text-gray-400 dark:text-gray-600">
-          © {currentTime.getFullYear()} Epoch Tools.
+          {t('footer.copyright', { year: currentTime.getFullYear() })}
         </div>
       </div>
     </footer>

@@ -1,262 +1,368 @@
-import { BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const ConverterSectionSEOContent = () => {
+  const { t } = useTranslation();
+
+  // Helper function to render text with markdown-style bold (**text**)
+  const renderText = (text: string) => {
+    return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        const boldText = part.slice(2, -2);
+        return <strong key={index} className="text-gray-900 dark:text-white">{boldText}</strong>;
+      }
+      return part;
+    });
+  };
+
+  // Helper to render links in markdown format [text](url)
+  const renderWithLinks = (text: string) => {
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts: (string | JSX.Element)[] = [];
+    let lastIndex = 0;
+    let match;
+    let key = 0;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      // Add text before the link
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      // Add the link
+      const linkText = match[1];
+      const linkUrl = match[2];
+      const isExternal = linkUrl.startsWith('http');
+      if (isExternal) {
+        parts.push(
+          <a
+            key={key++}
+            href={linkUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            {linkText}
+          </a>
+        );
+      } else {
+        parts.push(
+          <Link key={key++} to={linkUrl} className="text-blue-600 dark:text-blue-400 hover:underline">
+            {linkText}
+          </Link>
+        );
+      }
+      lastIndex = match.index + match[0].length;
+    }
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+    return parts.length > 0 ? parts : text;
+  };
+
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-        <BookOpen className="w-6 h-6 text-blue-500" />
-        Free Online Unix Timestamp Converter (Seconds & Milliseconds)
+        {t('seo.converter.title')}
       </h1>
 
       <div className="space-y-6 text-gray-700 dark:text-gray-300">
         <section>
-          <p className="mb-4 leading-relaxed">
-            Convert Unix timestamps (epoch time) to human-readable dates instantly, accurately and reliably. Our tools auto-detects seconds, milliseconds, microseconds while asjusting for DST (Daylight Saving Time) variations.
-          </p>
+          {t('seo.converter.intro').split('\n\n').map((paragraph, idx) => (
+            <p key={idx} className="mb-4 leading-relaxed">
+              {renderText(paragraph)}
+            </p>
+          ))}
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            What is Unix Timestamp / Epoch Time?
+            {t('seo.converter.whatIsUnix')}
           </h2>
           <p className="mb-4 leading-relaxed">
-            <a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Unix time</a>, popularly also known as epoch time, represents the number of <strong className="text-gray-900 dark:text-white">seconds</strong> (or milliseconds) elapsed since <strong className="text-gray-900 dark:text-white">January 1, 1970, 00:00:00 UTC</strong> (the Unix epoch). This consistent format powers most modern applications bec because it's:
+            <a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Unix time</a>, {renderText(t('seo.converter.whatIsUnixDescription'))}
+          </p>
+          <p className="mb-4 leading-relaxed">
+            {t('seo.converter.whatIsUnixAdvantages')}
           </p>
           <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
-            <li><strong className="text-gray-900 dark:text-white">Compact</strong>: Single integer (e.g., <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">1733832800</code>) vs long and expansive strings</li>
-            <li><strong className="text-gray-900 dark:text-white">Sortable</strong>: Naturally ordered by chronology</li>
-            <li><strong className="text-gray-900 dark:text-white">Timezone-agnostic</strong>: UTC-based mostly to avoid locale specific confusion.</li>
-            <li><strong className="text-gray-900 dark:text-white">Universal</strong>: Supported by every popular programming language and databases</li>
+            <li><strong className="text-gray-900 dark:text-white">{t('seo.converter.compact')}</strong>: {t('seo.converter.compactDescription')}</li>
+            <li><strong className="text-gray-900 dark:text-white">{t('seo.converter.sortable')}</strong>: {t('seo.converter.sortableDescription')}</li>
+            <li><strong className="text-gray-900 dark:text-white">{t('seo.converter.timezoneAgnostic')}</strong>: {t('seo.converter.timezoneAgnosticDescription')}</li>
+            <li><strong className="text-gray-900 dark:text-white">{t('seo.converter.universal')}</strong>: {t('seo.converter.universalDescription')}</li>
           </ul>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Example</strong>: <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">1733832800</code> = <strong className="text-gray-900 dark:text-white">December 10, 2025, 00:00:00 UTC</strong><br />
-            <strong className="text-gray-900 dark:text-white">In IST</strong>: December 10, 2025, 05:30:00 (+5:30 offset)
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.example')}</strong>: <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">1733832800</code> = {renderText(t('seo.converter.exampleDescription'))}<br />
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.inIst')}</strong>: {t('seo.converter.inIstDescription')}
           </p>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Precision variants</strong>:
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.precisionVariants')}</strong>:
           </p>
           <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
             <code>
-              1733832800     = Seconds (Unix standard)
-              <br />
-              1733832800000  = Milliseconds (JavaScript Date.now())
-              <br />
-              1733832800000000 = Microseconds (some databases)
-              <br />
+              {t('seo.converter.precisionVariantsCode').split('\n').map((line, idx) => (
+                <span key={idx}>
+                  {line}
+                  {idx < t('seo.converter.precisionVariantsCode').split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </code>
           </pre>
           <p className="leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Paste any epoch value above</strong> to see it converted instantly with timezone support.
+            {renderText(t('seo.converter.pasteAnyEpoch'))}
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Convert Epoch to Human-Readable Date
+            {t('seo.converter.convertEpoch')}
           </h2>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Our converter handles all formats</strong>:
+            {renderText(t('seo.converter.convertEpochDescription'))}
+          </p>
+          <p className="mb-4 leading-relaxed">
+            {t('seo.converter.howToUse')}
           </p>
           <ol className="space-y-2 list-decimal list-inside ml-2 mb-4">
-            <li><strong className="text-gray-900 dark:text-white">Input</strong>: Paste epoch value (auto-detects seconds vs milliseconds)</li>
-            {/* <li><strong className="text-gray-900 dark:text-white">Select</strong>: Target timezone (500+ options: UTC, IST, PST, CET, etc.)</li> */}
-            <li><strong className="text-gray-900 dark:text-white">Output</strong>: Human readable date + multiple formats (ISO 8601, RFC 2822, custom)</li>
+            <li><strong className="text-gray-900 dark:text-white">{t('seo.converter.input')}</strong>: {t('seo.converter.inputDescription')}</li>
+            <li><strong className="text-gray-900 dark:text-white">{t('seo.converter.output')}</strong>: {t('seo.converter.outputDescription')}</li>
           </ol>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Live example</strong>:
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.liveExample')}</strong>:
           </p>
           <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-            <code>Input: 1733832800 (seconds)
-              <br />
-              Output:
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;UTC: 2025-12-10 00:00:00
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;IST: 2025-12-10 05:30:00 (+05:30)
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;PST: 2025-12-09 16:00:00 (-08:00)</code>
+            <code>
+              {t('seo.converter.liveExampleCode').split('\n').map((line, idx) => (
+                <span key={idx}>
+                  {line}
+                  {idx < t('seo.converter.liveExampleCode').split('\n').length - 1 && <br />}
+                </span>
+              ))}
+            </code>
           </pre>
           <p className="leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Reverse conversion</strong>: Enter any date → Get reliable Unix timestamp accurately.
+            {renderText(t('seo.converter.reverseConversion'))}
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Common Developer Use Cases
+            {t('seo.converter.commonUseCases')}
           </h2>
 
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-              API Payload Validation
+              {t('seo.converter.apiPayloadValidation')}
             </h3>
             <p className="mb-4 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">JWT tokens </strong>unlike others use <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">iat</code> (issued at), <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">exp</code> (expiration), <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">nbf</code> (not before) as Unix timestamps. You can validate the claims instantlty and accurately using:
+              {renderText(t('seo.converter.apiPayloadValidationDescription'))}
             </p>
             <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-              <code>JWT payload: {`{ "exp": 1733919200 }`}
-                <br />
-                Convert → Dec 11, 2025 00:00:00 UTC ✓ Valid (future)</code>
+              <code>
+                {t('seo.converter.restApiExampleCode')}
+              </code>
             </pre>
             <p className="mb-4 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">REST APIs</strong> with custom timestamp fields:
-            </p>
-            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-              <code>{`{
-  "created_at": 1733832800,  
-  "updated_at": 1733836400
-}`}</code>
-            </pre>
-            <p className="mb-4 leading-relaxed">
-              Spot issues: Is <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">created_at</code> older than <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">updated_at</code>? Correct timezone? Seconds vs ms?
-            </p>
-            <p className="mb-4 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">Copy-paste validation</strong>:
-            </p>
-            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-              <code>{`// Validate API response
-const timestamp = 1733832800;
-const date = new Date(timestamp * 1000); // Convert seconds to ms
-console.log(date.toISOString()); // 2025-12-10T00:00:00.000Z`}</code>
-            </pre>
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-              Database Timestamp Storage
-            </h3>
-            <p className="mb-4 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">MySQL</strong>:
-            </p>
-            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-              <code>{`-- Store as Unix timestamp (INT)
-INSERT INTO events (timestamp) VALUES (1733832800);
-
--- Convert back
-SELECT FROM_UNIXTIME(timestamp) FROM events;`}</code>
-            </pre>
-            <p className="mb-4 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">PostgreSQL</strong>:
-            </p>
-            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-              <code>{`-- TIMESTAMPTZ stores UTC
-INSERT INTO logs (event_time) VALUES ('2025-12-10 00:00:00'::timestamptz);
-
--- Extract epoch
-SELECT EXTRACT(EPOCH FROM event_time)::bigint;`}</code>
-            </pre>
-            <p className="mb-4 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">Common errors fixed</strong>:
+              {renderText(t('seo.converter.restApiValidation'))}
             </p>
             <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
-              <li>Mixing <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">TIMESTAMP</code> (no TZ) vs <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">TIMESTAMPTZ</code> (UTC)</li>
-              <li>Seconds vs milliseconds storage</li>
-              <li>Regional server time vs UTC normalization
-              </li>
+              {(t('seo.converter.restApiValidationList', { returnObjects: true }) as string[]).map((item, idx) => (
+                <li key={idx}>{renderText(item)}</li>
+              ))}
             </ul>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              {t('seo.converter.jwtValidation')}
+            </h3>
+            <p className="mb-4 leading-relaxed">
+              {renderText(t('seo.converter.jwtValidationDescription'))}
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>
+                {t('seo.converter.jwtExampleCode')}
+              </code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              {renderText(t('seo.converter.jwtValidationBenefits'))}
+            </p>
+            <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
+              {(t('seo.converter.jwtValidationBenefitsList', { returnObjects: true }) as string[]).map((item, idx) => (
+                <li key={idx}>{renderText(item)}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              {t('seo.converter.codeValidation')}
+            </h3>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>
+                {t('seo.converter.codeValidationCode')}
+              </code>
+            </pre>
             <p className="leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">Use our converter</strong> to generate correct <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">INSERT</code> values and debug <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">SELECT</code> queries.
+              {renderWithLinks(t('seo.converter.codeValidationDescription'))}
+            </p>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              {t('seo.converter.databaseTimestampStorage')}
+            </h3>
+            <p className="mb-4 leading-relaxed">
+              {renderText(t('seo.converter.databaseTimestampStorageDescription'))}
+            </p>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">{t('seo.converter.mysql')}</strong>:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>
+                {t('seo.converter.mysqlCode')}
+              </code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              <strong className="text-gray-900 dark:text-white">{t('seo.converter.postgresql')}</strong>:
+            </p>
+            <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
+              <code>
+                {t('seo.converter.postgresqlCode')}
+              </code>
+            </pre>
+            <p className="mb-4 leading-relaxed">
+              {renderText(t('seo.converter.commonErrorsFixed'))}
+            </p>
+            <p className="leading-relaxed">
+              {renderText(t('seo.converter.useOurConverter'))}
             </p>
           </div>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Timezone & DST Handling
+            {t('seo.converter.timezoneDst')}
           </h2>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">India Standard Time (IST)</strong>: Fixed <strong className="text-gray-900 dark:text-white">+05:30</strong> offset (no DST since 1945)<br />
-            <strong className="text-gray-900 dark:text-white">Pacific Time (PST/PDT)</strong>: Switches <strong className="text-gray-900 dark:text-white">-08:00 → -07:00</strong> during DST
+            {renderText(t('seo.converter.timezoneDstDescription'))}
           </p>
           <p className="mb-4 leading-relaxed">
-            Here is a complete list of <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">IANA time zones.</a>
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.ist')}</strong>: {t('seo.converter.istDescription')}<br />
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.pstPdt')}</strong>: {t('seo.converter.pstPdtDescription')}
           </p>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Example DST impact</strong>:
+            {renderWithLinks(t('seo.converter.ianaTimeZones'))}
+          </p>
+          <p className="mb-4 leading-relaxed">
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.exampleDstImpact')}</strong>:
           </p>
           <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-            <code>Epoch: 1640995200 (Jan 1, 2022)
-              <br />
-              PST: 2021-12-31 16:00:00 (-08:00, no DST)
-              <br />
-PDT: 2021-12-31 17:00:00 (-07:00, DST active)</code>
+            <code>
+              {t('seo.converter.exampleDstImpactCode').split('\n').map((line, idx) => (
+                <span key={idx}>
+                  {line}
+                  {idx < t('seo.converter.exampleDstImpactCode').split('\n').length - 1 && <br />}
+                </span>
+              ))}
+            </code>
           </pre>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Production debugging</strong>:
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.productionDebugging')}</strong>:
           </p>
           <ol className="space-y-2 list-decimal list-inside ml-2 mb-4">
-            <li><strong className="text-gray-900 dark:text-white">Paste log timestamp</strong></li>
-            <li><strong className="text-gray-900 dark:text-white">Select investigator's timezone</strong></li>
-            <li><strong className="text-gray-900 dark:text-white">See exact local time</strong> → Faster incident correlation</li>
+            {(t('seo.converter.productionDebuggingSteps', { returnObjects: true }) as string[]).map((item, idx) => (
+              <li key={idx}><strong className="text-gray-900 dark:text-white">{renderText(item)}</strong></li>
+            ))}
           </ol>
           <p className="mb-4 leading-relaxed">
-            <strong className="text-gray-900 dark:text-white">Code fix</strong> (Node.js):
+            <strong className="text-gray-900 dark:text-white">{t('seo.converter.codeFix')}</strong>:
           </p>
           <pre className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-            <code>{`// Wrong: Local time
-const local = Date.now();
-
-// Correct: UTC epoch (seconds)
-const utcEpoch = Math.floor(Date.now() / 1000);`}</code>
+            <code>
+              {t('seo.converter.codeFixCode')}
+            </code>
           </pre>
           <p className="leading-relaxed">
-            Our tool catches time inconsistencies by making<strong className="text-gray-900 dark:text-white"> side-by-side comparisons </strong> in realtime.
+            {renderText(t('seo.converter.codeFixDescription'))}
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Frequently Asked Questions
+            {t('seo.converter.faq')}
           </h2>
           <div className="space-y-4">
             <div>
               <p className="mb-2 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">What timezone does Unix timestamp use?</strong><br />
-                Always <strong className="text-gray-900 dark:text-white">UTC</strong>. The epoch counts seconds since January 1 1970 00:00:00 UTC regardless of what the server or client location is.
+                <strong className="text-gray-900 dark:text-white">{t('seo.converter.whatTimezone')}</strong><br />
+                {renderText(t('seo.converter.whatTimezoneAnswer'))}
               </p>
             </div>
             <div>
               <p className="mb-2 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Seconds or milliseconds?</strong><br />   
-                  &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Seconds</strong>: Unix standard (<code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">date +%s</code>), APIs, databases<br />
-                  &bull;&nbsp;&nbsp;&nbsp;&nbsp;<strong className="text-gray-900 dark:text-white">Milliseconds</strong>: JavaScript (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline"><code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">Date.now()</code></a>), some logs<br />
-                <strong className="text-gray-900 dark:text-white">Our tool auto-detects</strong> based on value range saving your precious time and resources.
+                <strong className="text-gray-900 dark:text-white">{t('seo.converter.secondsOrMilliseconds')}</strong><br />
+                {t('seo.converter.secondsOrMillisecondsAnswer').split('\n').map((line, idx) => (
+                  <span key={idx}>
+                    {renderText(line)}
+                    {idx < t('seo.converter.secondsOrMillisecondsAnswer').split('\n').length - 1 && <br />}
+                  </span>
+                ))}
               </p>
             </div>
             <div>
               <p className="mb-2 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Will it work after Year 2038?</strong><br />
-                <strong className="text-gray-900 dark:text-white">The Y2038 problem </strong> only affects the older 32-bit systems which causes them to overflow after Jan 19, 2038 03:14:07 UTC exactly. <strong className="text-gray-900 dark:text-white">Modern day 64-bit systems</strong> solves this problem and handles the timestamp till the year 292 billion.
+                <strong className="text-gray-900 dark:text-white">{t('seo.converter.willItWorkAfter2038')}</strong><br />
+                {t('seo.converter.willItWorkAfter2038Answer').split('\n').map((line, idx) => (
+                  <span key={idx}>
+                    {renderText(line)}
+                    {idx < t('seo.converter.willItWorkAfter2038Answer').split('\n').length - 1 && <br />}
+                  </span>
+                ))}
               </p>
             </div>
             <div>
               <p className="mb-2 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Is it safe for production data?</strong><br />
-                We convert the epoch timestamp <strong className="text-gray-900 dark:text-white">100% at the client-side</strong> which leaves No data in your browser.
+                <strong className="text-gray-900 dark:text-white">{t('seo.converter.isItSafe')}</strong><br />
+                {renderText(t('seo.converter.isItSafeAnswer'))}
               </p>
             </div>
             <div>
               <p className="mb-2 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Free forever?</strong><br />
-                <strong className="text-gray-900 dark:text-white">Yes</strong>. No signups, no limits, ad-supported.
-              </p>
-            </div>
-            <div>
-              <p className="mb-2 leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">Related tools</strong>: <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline">Unix Timestamp ↔ Date Converter</Link> | <Link to="/week-number" className="text-blue-600 dark:text-blue-400 hover:underline">Week Number</Link> | <Link to="/countdown" className="text-blue-600 dark:text-blue-400 hover:underline">Countdown to "Epochalypse" (Y2038)</Link>
+                <strong className="text-gray-900 dark:text-white">{t('seo.converter.freeForever')}</strong><br />
+                {renderText(t('seo.converter.freeForeverAnswer'))}
               </p>
             </div>
           </div>
         </section>
 
+        <section>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            {t('seo.converter.relatedTools')}
+          </h2>
+          <p className="mb-4 leading-relaxed">
+            {renderText(t('seo.converter.relatedToolsDescription'))}
+          </p>
+          <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
+            {(t('seo.converter.relatedToolsLinks', { returnObjects: true }) as string[]).map((link, idx) => (
+              <li key={idx} className="leading-relaxed">
+                {renderWithLinks(link)}
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section className="pt-4 border-t border-gray-200 dark:border-gray-700">
           <p className="text-sm text-gray-600 dark:text-gray-400 italic">
-            By Manish Pamnani, Full-Stack Developer | Last Updated: Dec 10, 2025
+            {t('seo.converter.authorFooter').split('\n').map((line, idx) => (
+              <span key={idx}>
+                {line}
+                {idx < t('seo.converter.authorFooter').split('\n').length - 1 && <br />}
+              </span>
+            ))}
           </p>
         </section>
       </div>
     </div>
   );
 };
-
