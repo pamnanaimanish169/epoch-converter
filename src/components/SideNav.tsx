@@ -77,7 +77,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                   <span>{t('navigation.epochConverter')}</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/week-number" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Calendar className="w-4 h-4" />
                   <span>{t('navigation.weekNumber')}</span>
@@ -88,7 +88,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                   <Timer className="w-4 h-4" />
                   <span>{t('navigation.countdown')}</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
       </nav>

@@ -187,7 +187,7 @@ function App() {
       default:
         return {
           ...defaultConfig,
-          title: 'Free Online Unix Timestamp Converter - Epoch to Date (UTC/IST) | Epoch Tools',
+          title: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Convert Time Online',
           description: 'Convert Unix timestamps to human-readable dates instantly. Supports seconds, milliseconds, UTC/IST timezones, and DST. Free developer tool with code examples and timezone debugging.',
           keywords: 'epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools',
           url: currentUrl,
@@ -195,7 +195,7 @@ function App() {
           structuredData: {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Free Online Unix Timestamp Converter - Epoch to Date (UTC/IST)",
+            "name": "Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
             "description": "Convert Unix timestamps to human-readable time and back instantly",
             "datePublished": "2025-01-01",
             "dateModified": "2025-12-10",
