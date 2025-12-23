@@ -81,7 +81,9 @@ function App() {
     };
 
     const defaultConfig = {
-      siteName: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
+      siteName: isChinese 
+        ? 'Unix时间戳转换器 | 即时转换纪元时间'
+        : 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
       locale: isChinese ? 'zh_CN' : 'en_US',
       image: `${baseUrl}/epoch-converter-logo.png`,
       canonical: getCanonicalUrl(),
@@ -91,16 +93,16 @@ function App() {
       case '/about':
         return {
           ...defaultConfig,
-          title: 'About - Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
-          description: 'Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter that turns raw timestamps into clear, readable dates.',
-          keywords: 'epoch converter, unix timestamp, about epoch tools, time converter, developer tools',
+          title: t('seo.about.title'),
+          description: t('seo.about.description'),
+          keywords: t('seo.about.keywords'),
           url: currentUrl,
           type: 'website' as const,
           structuredData: {
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "About - Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
-            "description": "Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter.",
+            "headline": t('seo.about.title'),
+            "description": t('seo.about.description'),
             "author": {
               "@type": "Organization",
               "name": "Epoch Tools"
@@ -114,9 +116,9 @@ function App() {
       case '/faq':
         return {
           ...defaultConfig,
-          title: 'FAQ - Unix Timestamp Converter | Convert Epoch Time to Date Instantly',
-          description: 'Frequently asked questions about epoch converter, unix timestamp conversion, ISO 8601 format, and time zone handling.',
-          keywords: 'epoch converter FAQ, unix timestamp questions, epoch time help, timestamp converter FAQ',
+          title: t('seo.faq.title'),
+          description: t('seo.faq.description'),
+          keywords: t('seo.faq.keywords'),
           url: currentUrl,
           type: 'website' as const,
           structuredData: {
@@ -125,10 +127,12 @@ function App() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What is an epoch converter?",
+                "name": isChinese ? "什么是epoch转换器？" : "What is an epoch converter?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "An epoch converter is a tool that helps you convert Unix timestamps into readable dates or times, and vice versa."
+                  "text": isChinese 
+                    ? "Epoch转换器是一个帮助您将Unix时间戳转换为可读日期或时间的工具，反之亦然。"
+                    : "An epoch converter is a tool that helps you convert Unix timestamps into readable dates or times, and vice versa."
                 }
               }
             ]
@@ -137,16 +141,16 @@ function App() {
       case '/week-number':
         return {
           ...defaultConfig,
-          title: 'Week Number Calculator – Current Week & ISO Week of the Year | Epoch Tools',
-          description: 'Find the current week number (ISO 8601) and calculate the week of the year for any date with this free week number calculator.',
-          keywords: 'week number, current week number, week number today, ISO week number, week calculator, what week is it',
+          title: t('seo.weekNumber.title'),
+          description: t('seo.weekNumber.description'),
+          keywords: t('seo.weekNumber.keywords'),
           url: currentUrl,
           type: 'website' as const,
           structuredData: {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Week Number Calculator – Current Week & ISO Week of the Year",
-            "description": "Find the current week number (ISO 8601) and calculate the week of the year for any date.",
+            "name": t('seo.weekNumber.title'),
+            "description": t('seo.weekNumber.description'),
             "url": currentUrl,
             "datePublished": "2025-12-10",
             "dateModified": "2025-12-10",
@@ -164,16 +168,20 @@ function App() {
         
         return {
           ...defaultConfig,
-          title: `Y2038 Countdown – Time Left Until the Year 2038 Problem (Epochalypse) | Epoch Tools`,
-          description: 'Watch the live Y2038 countdown and see how much time is left until the Year 2038 problem (Epochalypse). Learn how Unix time overflows on 32‑bit systems and what it means for your code.',
-          keywords: 'unix countdown, epoch countdown, timestamp countdown, unix time countdown, countdown calculator, epoch timer',
+          title: t('seo.countdown.title'),
+          description: t('seo.countdown.description'),
+          keywords: t('seo.countdown.keywords'),
           url: currentUrl,
           type: 'website' as const,
           structuredData: {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": `Countdown to Unix Time ${formattedTarget}`,
-            "description": "Countdown in seconds to any Unix timestamp with real-time updates",
+            "name": isChinese 
+              ? `倒计时至Unix时间 ${formattedTarget}`
+              : `Countdown to Unix Time ${formattedTarget}`,
+            "description": isChinese
+              ? "实时更新的Unix时间戳倒计时（秒）"
+              : "Countdown in seconds to any Unix timestamp with real-time updates",
             "applicationCategory": "UtilityApplication",
             "operatingSystem": "Any",
             "offers": {
@@ -187,16 +195,18 @@ function App() {
       default:
         return {
           ...defaultConfig,
-          title: 'Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Convert Time Online',
-          description: 'Convert Unix timestamps to human-readable dates instantly. Supports seconds, milliseconds, UTC/IST timezones, and DST. Free developer tool with code examples and timezone debugging.',
-          keywords: 'epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools',
+          title: t('seo.converter.title'),
+          description: t('seo.converter.description'),
+          keywords: t('seo.converter.keywords'),
           url: currentUrl,
           type: 'website' as const,
           structuredData: {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
-            "description": "Convert Unix timestamps to human-readable time and back instantly",
+            "name": t('seo.converter.title'),
+            "description": isChinese
+              ? "即时将Unix时间戳转换为人类可读的时间，反之亦然"
+              : "Convert Unix timestamps to human-readable time and back instantly",
             "datePublished": "2025-01-01",
             "dateModified": "2025-12-10",
             "author": {"@type": "Person", "name": "Manish Pamnani"},          

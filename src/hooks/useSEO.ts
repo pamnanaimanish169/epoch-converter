@@ -113,6 +113,12 @@ const useSEO = ({
       document.title = title;
     }
 
+    // Set HTML lang attribute based on locale
+    if (locale) {
+      const htmlLang = locale === 'zh_CN' ? 'zh-CN' : 'en';
+      document.documentElement.lang = htmlLang;
+    }
+
     // Helper function to update or create meta tags
     const setMetaTag = (selector: string, attribute: string, value: string): void => {
       if (!value) return;

@@ -157,9 +157,20 @@
     "close": "Close notification"
   },
   "seo": {
+    "about": {
+      "title": "About - Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
+      "description": "Learn about Epoch Tools - a fast, privacy-first epoch converter and unix time converter that turns raw timestamps into clear, readable dates.",
+      "keywords": "epoch converter, unix timestamp, about epoch tools, time converter, developer tools"
+    },
+    "faq": {
+      "title": "FAQ - Unix Timestamp Converter | Convert Epoch Time to Date Instantly",
+      "description": "Frequently asked questions about epoch converter, unix timestamp conversion, ISO 8601 format, and time zone handling.",
+      "keywords": "epoch converter FAQ, unix timestamp questions, epoch time help, timestamp converter FAQ"
+    },
     "converter": {
       "title": "Unix Timestamp Converter | Convert Epoch Time to Date Instantly - Convert Time Online",
       "description": "Convert Unix timestamps (epoch time) to human-readable dates instantly, accurately and reliably. Our tools auto-detects seconds, milliseconds, microseconds while asjusting for DST (Daylight Saving Time) variations.",
+      "keywords": "epoch converter, unix timestamp, time converter, epoch time, unix time, timestamp converter, date converter, developer tools",
       "intro": "Convert Unix timestamps (epoch time) to human-readable dates instantly, accurately and reliably. Our tools auto-detects seconds, milliseconds, microseconds while adjusting for DST (Daylight Saving Time) variations.",
       "whatIsUnix": "What is Unix Timestamp / Epoch Time?",
       "whatIsUnixDescription": "Unix time, popularly also known as epoch time, represents the number of **seconds** (or milliseconds) elapsed since **January 1, 1970, 00:00:00 UTC** (the Unix epoch). This consistent format powers most modern applications because it's:",
@@ -267,6 +278,8 @@
     },
     "weekNumber": {
       "title": "Week Number Calculator - Current Week Number Today",
+      "description": "Find the current week number (ISO 8601) and calculate the week of the year for any date with this free week number calculator.",
+      "keywords": "week number, current week number, week number today, ISO week number, week calculator, what week is it",
       "whatIsWeekNumber": "What Is a Week Number?",
       "whatIsWeekNumberDescription": "A week number, as the name suggests, tells you which numbered week of the year the current date falls in. A value like {week50} simply means that you're at the 50th week of the current calendar year (Just 2 weeks from the new year!). Knowing which week you're in currently helps you plan your upcoming sprints, set deadlines, and align reports and events by {weekOfYear} instead of specific calendar dates or months.",
       "iso8601Standard": "Even a simple thing like week numbers has different ways or standards to be defined, the most widely used being the {iso8601}. Under this standard, week 1 is the week that contains the first Thursday of the year, and all the weeks start from Monday. That's the reason (apparently a weird one) that some dates at the beginning of January still belong to the last ISO week of the previous year, like some late dates of December previous year can still be counted as week 1 of the next year.",
@@ -287,7 +300,8 @@
     },
     "countdown": {
       "title": "Countdown to the Year 2038 Problem (Epochalypse)",
-      "description": "Track the live countdown to the {y2038Problem} and see exactly how much time is left until the 32-bit Unix timestamps overflow (precisely at {overflowDate}) and start producing incorrect timestamps. This page helps you understand this phenomenon, also known as {epochalypse}, and why it matters.",
+      "description": "Watch the live Y2038 countdown and see how much time is left until the Year 2038 problem (Epochalypse). Learn how Unix time overflows on 32‑bit systems and what it means for your code.",
+      "keywords": "unix countdown, epoch countdown, timestamp countdown, unix time countdown, countdown calculator, epoch timer",
       "whatIsY2038": "What Is the Year 2038 Problem?",
       "howItWorks": "How the Y2038 Countdown Works",
       "relatesToEpoch": "How This Relates to Epoch & Unix Time",
