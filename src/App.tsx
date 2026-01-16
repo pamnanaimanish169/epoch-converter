@@ -157,7 +157,7 @@ function App() {
             "author": { "@type": "Person", "name": "Manish Pamnani" }
           }
         };
-      case '/countdown': {
+      case '/epoch-countdown': {
         // Get target epoch from URL params for dynamic title
         const targetParam = new URLSearchParams(location.search).get("target");
         const Y2038_TIMESTAMP = 2147483647;
@@ -272,7 +272,7 @@ function App() {
                 }
               />
               <Route
-                path="/countdown"
+                path="/epoch-countdown"
                 element={
                   <>
                     <Countdown onCopy={handleCopy} />

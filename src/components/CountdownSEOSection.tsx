@@ -4,15 +4,22 @@ export const CountdownSEOSection = () => {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 transition-colors">
       <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-        Countdown to the Year 2038 Problem (Epochalypse)
+        Epoch Countdown or the Year 2038 Problem (Epochalypse)
       </h2>
 
       <div className="space-y-6 text-gray-700 dark:text-gray-300">
         <section>
           <p className="mb-4 leading-relaxed">
-            Track the live countdown to the{" "}
+            Track the live epoch countdown or the countdown to the{" "}
             <strong className="text-gray-900 dark:text-white">
-              Year 2038 (Y2038) problem
+              <a
+                href="https://en.wikipedia.org/wiki/Year_2038_problem"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-blue-600 dark:text-blue-400"
+              >
+                Year 2038 (Y2038) problem
+              </a>
             </strong>{" "}
             and see exactly how much time is left until the 32-bit Unix
             timestamps overflow (precisely at{" "}
@@ -33,9 +40,20 @@ export const CountdownSEOSection = () => {
             What Is the Year 2038 Problem?
           </h2>
           <p className="mb-4 leading-relaxed">
-            The Year 2038 (Y2038) Problem, often known as the{" "}
+            The <a
+              href="https://en.wikipedia.org/wiki/Year_2038_problem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-600 dark:text-blue-400"
+            >
+              Year 2038 (Y2038)
+            </a> Problem, often known as the{" "}
             <strong className="text-gray-900 dark:text-white">
               Epochalypse
+            </strong>
+            {" "} or {" "}
+            <strong>
+              epoch countdown
             </strong>
             , is a well-known limitation/bug which occurs in the older 32-bit
             systems that store time as a signed 32-bit integer counting the
@@ -66,7 +84,7 @@ export const CountdownSEOSection = () => {
           <p className="mt-4 leading-relaxed">
             Our{" "}
             <strong className="text-gray-900 dark:text-white">
-              "Epochalypse countdown"
+              "Epoch countdown"
             </strong>{" "}
             shows a live timer to that critical moment, so you are always
             informed about how much time is left until the real meltdown, aka
@@ -76,13 +94,20 @@ export const CountdownSEOSection = () => {
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            How the Y2038 Countdown Works
+            How the Epoch Countdown Works
           </h2>
           <p className="mb-4 leading-relaxed">
             The countdown timer appearing on this page calculates the time
             remaining until{" "}
             <strong className="text-gray-900 dark:text-white">
-              19 January 2038, 03:14:07 UTC
+              <a
+                href="https://en.wikipedia.org/wiki/Unix_time"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 underline"
+              >
+                19 January 2038, 03:14:07 UTC
+              </a>
             </strong>
             , from the current time.
           </p>
@@ -112,7 +137,14 @@ export const CountdownSEOSection = () => {
             Since everything runs client-side, you often get an accurate view
             based on your device's locale-specific clock (often synced within
             seconds) without worrying about the actual target (i.e., the
-            Epochalypse), which remains fixed at UTC.
+            Epochalypse), which remains fixed at <a
+              href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 underline"
+            >
+              UTC
+            </a>.
           </p>
           <p className="mb-4 leading-relaxed">
             If any systems with such configurations are still running beyond
@@ -180,16 +212,10 @@ export const CountdownSEOSection = () => {
           <p className="leading-relaxed">
             The{" "}
             <strong className="text-gray-900 dark:text-white">
-              Epochalypse countdown
+              Epoch countdown
             </strong>{" "}
-            when complete other tools like{" "}
-            <Link
-              to="/week-number"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              "Week Number Calculator"
-            </Link>{" "}
-            and the "Unix Timestamp Converter" by tracking the critical 2038
+            when complete with other tools like
+            "Unix Timestamp Converter" by tracking the critical 2038
             Unix overflow affecting legacy systems running on 32-bit systems.
           </p>
         </section>
@@ -210,7 +236,14 @@ export const CountdownSEOSection = () => {
               <li>
                 Which systems still run on{" "}
                 <strong className="text-gray-900 dark:text-white">
-                  32-bit architectures
+                  <a
+                    href="https://en.wikipedia.org/wiki/32-bit_computing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-600 dark:text-blue-400"
+                  >
+                    32-bit architectures
+                  </a>
                 </strong>{" "}
                 and need to be updated to 64-bit systems?
               </li>
@@ -235,7 +268,12 @@ export const CountdownSEOSection = () => {
               Education & Training
             </h3>
             <p className="mb-4 leading-relaxed">
-              The Year 2038 problem is a great learning opportunity for:
+              The <a
+                href="https://en.wikipedia.org/wiki/Year_2038_problem"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-blue-600 dark:text-blue-400"
+              >Year 2038 problem</a> is a great learning opportunity for:
             </p>
             <ul className="space-y-2 list-disc list-inside ml-2 mb-4">
               <li>
@@ -279,7 +317,16 @@ export const CountdownSEOSection = () => {
               </li>
               <li>To reliably document the long-term site readiness plans</li>
               <li>
-                To reassure the stakeholders about 32-but dependencies being
+                To reassure the stakeholders about{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Year_2038_problem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-600 dark:text-blue-400"
+                >
+                  32-bit dependencies
+                </a>{" "}
+                being
                 phased out before the "Epochalypse" countdown and regain their
                 trust.
               </li>
@@ -300,7 +347,14 @@ export const CountdownSEOSection = () => {
                 <br />
                 No. Only systems that still rely on old{" "}
                 <strong className="text-gray-900 dark:text-white">
-                  32-bit signed Unix timestamps
+                  <a
+                    href="https://en.wikipedia.org/wiki/32-bit_computing"
+                    className="underline text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    32-bit signed Unix timestamps
+                  </a>
                 </strong>{" "}
                 without any plans to update them to newer and robust 64-bit
                 ones. Most modern 64-bit systems already come with the
