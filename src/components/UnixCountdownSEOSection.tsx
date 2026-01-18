@@ -569,7 +569,7 @@ print(f"Seconds left: {diff}")`}
 
         <section className="pt-4 border-t border-gray-200 dark:border-gray-700">
           <p className="text-sm text-gray-600 dark:text-gray-400 italic">
-            By Manish Pamnani, Full-Stack Developer | Last Updated: Dec 10, 2025
+            By Manish Pamnani, Full-Stack Developer | Last Updated: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
           </p>
         </section>
       </div>

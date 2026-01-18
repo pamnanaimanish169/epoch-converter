@@ -18,7 +18,8 @@
     "toggleTheme": "Toggle theme",
     "epochConverter": "Epoch Converter",
     "weekNumber": "Week Number",
-    "countdown": "Epoch Countdown"
+    "countdown": "Epoch Countdown",
+    "unixCountdown": "Unix Countdown"
   },
   "converter": {
     "title": "Bi-Directional Converter",

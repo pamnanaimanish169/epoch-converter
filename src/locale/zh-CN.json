@@ -18,7 +18,8 @@
     "toggleTheme": "切换主题",
     "epochConverter": "Epoch转换器",
     "weekNumber": "周数",
-    "countdown": "倒计时至\"Epochalypse\"（Y2038）"
+    "countdown": "倒计时至\"Epochalypse\"（Y2038）",
+    "unixCountdown": "Unix倒计时"
   },
   "converter": {
     "title": "双向转换器",

@@ -1,4 +1,4 @@
-import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw, BookMarked, Timer, Languages } from 'lucide-react';
+import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw, BookMarked, Timer, Languages, Clock } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
@@ -87,6 +87,12 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 <Link to="/epoch-countdown" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Timer className="w-4 h-4" />
                   <span>{t('navigation.countdown')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/unix-countdown" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <Clock className="w-4 h-4" />
+                  <span>{t('navigation.unixCountdown')}</span>
                 </Link>
               </li>
             </ul>
