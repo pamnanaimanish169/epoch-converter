@@ -299,7 +299,7 @@
       "howDoesThisRelate": "How does this relate to your other tools?"
     },
     "countdown": {
-      "title": "Epoch Countdown | Unix Timestamp Converter - Convert Epoch Time Time to human readable date",
+      "title": "Epoch Countdown | Countdown to the Year 2038 Problem (Epochalypse)",
       "description": "Watch the live Y2038 countdown and see how much time is left until the Year 2038 problem (Epochalypse). Learn how Unix time overflows on 32‑bit systems and what it means for your code.",
       "keywords": "unix countdown, epoch countdown, timestamp countdown, unix time countdown, countdown calculator, epoch timer",
       "whatIsY2038": "What Is the Year 2038 Problem?",

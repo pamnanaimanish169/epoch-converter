@@ -9,13 +9,16 @@ import { ToastContainer } from './components/Toast';
 import { ConverterSectionSEOContent } from './components/ConverterSectionSEOContent';
 import { WeekNumberSEOSection } from './components/WeekNumberSEOSection';
 import { CountdownSEOSection } from './components/CountdownSEOSection';
+import { UnixCountdownSEOSection } from './components/UnixCountdownSEOSection';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import useSEO from './hooks/useSEO';
 import { Routes, Route, useLocation, useSearchParams } from 'react-router-dom';
+import { formatDateTimeString } from './utils/epochUtils';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
 import Countdown from './pages/Countdown';
+import UnixCountdown from './pages/UnixCountdown';
 import i18n from './i18n';
 
 function App() {
@@ -192,7 +195,49 @@ function App() {
           }
         };
       }
+      case '/unix-countdown': {
+        const DEFAULT_TIMESTAMP = 1800000000;
+        const formattedValue = DEFAULT_TIMESTAMP.toLocaleString();
+        const timestampMs = DEFAULT_TIMESTAMP * 1000;
+        const targetDate = new Date(timestampMs);
+        const targetDateStr = !isNaN(targetDate.getTime())
+          ? formatDateTimeString(targetDate, true).replace(" UTC", " GMT")
+          : '';
+        
+        return {
+          ...defaultConfig,
+          title: isChinese
+            ? `倒计时至Unix时间 ${formattedValue} | Unix时间戳倒计时`
+            : `Countdown to Unix Time ${formattedValue} | Unix Timestamp Countdown`,
+          description: isChinese
+            ? `实时倒计时至Unix时间戳 ${formattedValue} 秒${targetDateStr ? ` (${targetDateStr})` : ''}。查看距离该时间戳还有多少时间。`
+            : `Live countdown to Unix timestamp ${formattedValue} seconds${targetDateStr ? ` (${targetDateStr})` : ''}. See how much time is left until this Unix timestamp.`,
+          keywords: isChinese
+            ? `unix倒计时, epoch倒计时, 时间戳倒计时, unix时间倒计时, 倒计时计算器, epoch计时器, ${formattedValue}`
+            : `unix countdown, epoch countdown, timestamp countdown, unix time countdown, countdown calculator, epoch timer, ${formattedValue}`,
+          url: currentUrl,
+          type: 'website' as const,
+          structuredData: {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": isChinese
+              ? `倒计时至Unix时间 ${formattedValue}`
+              : `Countdown to Unix Time ${formattedValue}`,
+            "description": isChinese
+              ? `实时倒计时至Unix时间戳 ${formattedValue} 秒`
+              : `Live countdown to Unix timestamp ${formattedValue} seconds`,
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        };
+      }
       default:
+        // Home page and other routes
         return {
           ...defaultConfig,
           title: t('seo.converter.title'),
@@ -279,6 +324,10 @@ function App() {
                     <CountdownSEOSection />
                   </>
                 }
+              />
+              <Route
+                path="/unix-countdown"
+                element={<UnixCountdown onCopy={handleCopy} />}
               />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
