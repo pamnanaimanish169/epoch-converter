@@ -9,7 +9,6 @@ import { ToastContainer } from './components/Toast';
 import { ConverterSectionSEOContent } from './components/ConverterSectionSEOContent';
 import { WeekNumberSEOSection } from './components/WeekNumberSEOSection';
 import { CountdownSEOSection } from './components/CountdownSEOSection';
-import { UnixCountdownSEOSection } from './components/UnixCountdownSEOSection';
 import { useTheme } from './hooks/useTheme';
 import { useToast } from './hooks/useToast';
 import useSEO from './hooks/useSEO';
@@ -19,6 +18,8 @@ import About from './pages/About';
 import FAQ from './pages/FAQ';
 import Countdown from './pages/Countdown';
 import UnixCountdown from './pages/UnixCountdown';
+import { TimezonePage } from './pages/TimezonePage';
+import { getTimezoneConfig } from './utils/timezoneConfig';
 import i18n from './i18n';
 
 function App() {
@@ -237,6 +238,48 @@ function App() {
         };
       }
       default:
+        // Check if this is a timezone route
+        const timezoneMatch = location.pathname.match(/^\/epoch-to-([a-z]+)$/i);
+        if (timezoneMatch) {
+          const timezoneCode = timezoneMatch[1].toUpperCase();
+          const timezoneConfig = getTimezoneConfig(timezoneCode);
+          
+          if (timezoneConfig) {
+            const timezoneTitle = `Epoch to ${timezoneConfig.code} Converter - Convert Unix Timestamps to ${timezoneConfig.fullName}`;
+            const timezoneDescription = `Convert Unix epoch timestamps to ${timezoneConfig.fullName} (${timezoneConfig.code}, ${timezoneConfig.utcOffset}). ${timezoneConfig.observesDST ? `Handles ${timezoneConfig.code}/${timezoneConfig.dstCode} daylight saving transitions.` : `No daylight saving time - constant ${timezoneConfig.utcOffset} offset year-round.`} Free, accurate, and instant conversion.`;
+            const timezoneKeywords = `epoch to ${timezoneConfig.code}, unix timestamp to ${timezoneConfig.code}, ${timezoneConfig.code} converter, ${timezoneConfig.fullName}, epoch ${timezoneConfig.code}, timestamp ${timezoneConfig.code}, ${timezoneConfig.code} timezone converter`;
+            
+            return {
+              ...defaultConfig,
+              title: timezoneTitle,
+              description: timezoneDescription,
+              keywords: timezoneKeywords,
+              url: currentUrl,
+              type: 'website' as const,
+              structuredData: {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": `Epoch to ${timezoneConfig.code} Converter`,
+                "description": timezoneDescription,
+                "applicationCategory": "UtilityApplication",
+                "operatingSystem": "Any",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                },
+                "featureList": [
+                  `${timezoneConfig.code}-specific timestamp conversion`,
+                  timezoneConfig.observesDST ? `Handles ${timezoneConfig.code}/${timezoneConfig.dstCode} transitions` : "No DST complexity",
+                  `Accurate ${timezoneConfig.utcOffset} offset conversion`,
+                  "Real-time conversion",
+                  "Multiple programming language examples"
+                ]
+              }
+            };
+          }
+        }
+        
         // Home page and other routes
         return {
           ...defaultConfig,
@@ -329,8 +372,13 @@ function App() {
                 path="/unix-countdown"
                 element={<UnixCountdown onCopy={handleCopy} />}
               />
-              <Route path="/about" element={<About />} />
-              <Route path="/faq" element={<FAQ />} />
+              {/* <Route path="/about" element={<About />} /> */}
+              {/* <Route path="/faq" element={<FAQ />} /> */}
+              {/* Timezone routes - catch-all at the end to match /epoch-to-* pattern */}
+              <Route
+                path="*"
+                element={<TimezonePage onCopy={handleCopy} />}
+              />
             </Routes>
           </div>
 
