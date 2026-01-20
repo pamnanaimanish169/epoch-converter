@@ -1,6 +1,8 @@
-import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw, BookMarked, Timer, Languages, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw, BookMarked, Timer, Languages, Clock, ChevronDown, ChevronRight, Globe } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { getPopularTimezones } from '../utils/timezoneConfig';
 import i18n from '../i18n';
 
 interface SideNavProps {
@@ -11,6 +13,8 @@ interface SideNavProps {
 export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isTimezoneExpanded, setIsTimezoneExpanded] = useState(false);
+  const popularTimezones = getPopularTimezones();
   
   const toggleLanguage = () => {
     const currentLang = i18n.language;
@@ -94,6 +98,43 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                   <Clock className="w-4 h-4" />
                   <span>{t('navigation.unixCountdown')}</span>
                 </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => setIsTimezoneExpanded(!isTimezoneExpanded)}
+                  className="w-full flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                >
+                  {isTimezoneExpanded ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                  <Globe className="w-4 h-4" />
+                  <span>Timezone Converters</span>
+                </button>
+                {isTimezoneExpanded && (
+                  <ul className="ml-6 mt-1 space-y-1">
+                    {popularTimezones.map((tz) => (
+                      <li key={tz.code}>
+                        <Link
+                          to={`/epoch-to-${tz.code.toLowerCase()}`}
+                          className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm"
+                        >
+                          <span>{tz.code}</span>
+                          <span className="text-xs text-gray-500 dark:text-gray-500">({tz.utcOffset})</span>
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <Link
+                        to="/timezones"
+                        className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm font-medium"
+                      >
+                        <span>View All 43 Timezones →</span>
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </li>
             </ul>
           </div>

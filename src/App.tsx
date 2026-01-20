@@ -19,6 +19,7 @@ import FAQ from './pages/FAQ';
 import Countdown from './pages/Countdown';
 import UnixCountdown from './pages/UnixCountdown';
 import { TimezonePage } from './pages/TimezonePage';
+import { TimezoneListing } from './pages/TimezoneListing';
 import { getTimezoneConfig } from './utils/timezoneConfig';
 import i18n from './i18n';
 
@@ -374,6 +375,7 @@ function App() {
               />
               {/* <Route path="/about" element={<About />} /> */}
               {/* <Route path="/faq" element={<FAQ />} /> */}
+              <Route path="/timezones" element={<TimezoneListing />} />
               {/* Timezone routes - catch-all at the end to match /epoch-to-* pattern */}
               <Route
                 path="*"

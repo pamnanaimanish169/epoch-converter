@@ -1217,3 +1217,38 @@ export const getRelatedTimezones = (code: string, limit: number = 5): TimezoneCo
   return related;
 };
 
+// Get popular timezones for navigation
+export const getPopularTimezones = (): TimezoneConfig[] => {
+  const popularCodes = ['IST', 'EST', 'PST', 'GMT', 'JST', 'AEST', 'CET', 'BST'];
+  return popularCodes
+    .map(code => getTimezoneConfig(code))
+    .filter((tz): tz is TimezoneConfig => tz !== undefined);
+};
+
+// Get all timezones grouped by region
+export const getTimezonesByRegion = (): Record<string, TimezoneConfig[]> => {
+  const regions: Record<string, TimezoneConfig[]> = {
+    'US & Canada': [],
+    'Europe': [],
+    'Asia': [],
+    'Australia & Pacific': [],
+    'Middle East & Other': []
+  };
+
+  Object.values(TIMEZONE_CONFIGS).forEach(config => {
+    if (config.regions.some(r => r.includes('United States') || r.includes('Canada'))) {
+      regions['US & Canada'].push(config);
+    } else if (config.regions.some(r => r.includes('Europe') || r.includes('United Kingdom') || r.includes('France') || r.includes('Germany'))) {
+      regions['Europe'].push(config);
+    } else if (config.regions.some(r => r.includes('Asia') || r.includes('Japan') || r.includes('China') || r.includes('India'))) {
+      regions['Asia'].push(config);
+    } else if (config.regions.some(r => r.includes('Australia') || r.includes('New Zealand') || r.includes('Pacific'))) {
+      regions['Australia & Pacific'].push(config);
+    } else {
+      regions['Middle East & Other'].push(config);
+    }
+  });
+
+  return regions;
+};
+
