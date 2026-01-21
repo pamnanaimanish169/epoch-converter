@@ -172,6 +172,39 @@ const useSEO = ({
       link.href = canonicalUrl;
     }
 
+    // Set hreflang tags
+    const baseUrl = 'https://epoch-tools.com';
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+    
+    // Helper function to set or update hreflang link
+    const setHreflangTag = (lang: string, href: string): void => {
+      const selector = `link[rel="alternate"][hreflang="${lang}"]`;
+      let link = document.querySelector(selector) as HTMLLinkElement;
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'alternate';
+        link.setAttribute('hreflang', lang);
+        document.head.appendChild(link);
+      }
+      link.href = href;
+    };
+
+    // Set hreflang tags for both languages
+    // For home page, use clean URLs as specified
+    if (currentPath === '/') {
+      setHreflangTag('en', `${baseUrl}/`);
+      setHreflangTag('zh-CN', `${baseUrl}/?lang=zh-CN`);
+    } else {
+      // For other pages, preserve the path
+      const urlEn = new URL(`${baseUrl}${currentPath}`);
+      urlEn.searchParams.delete('lang');
+      setHreflangTag('en', urlEn.toString());
+      
+      const urlZh = new URL(`${baseUrl}${currentPath}`);
+      urlZh.searchParams.set('lang', 'zh-CN');
+      setHreflangTag('zh-CN', urlZh.toString());
+    }
+
     // Add structured data
     if (structuredData) {
       let script = document.querySelector('#structured-data') as HTMLScriptElement;

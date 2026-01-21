@@ -373,8 +373,8 @@ function App() {
                 path="/unix-countdown"
                 element={<UnixCountdown onCopy={handleCopy} />}
               />
-              {/* <Route path="/about" element={<About />} /> */}
-              {/* <Route path="/faq" element={<FAQ />} /> */}
+              <Route path="/about" element={<About />} />
+              <Route path="/faq" element={<FAQ />} />
               <Route path="/timezones" element={<TimezoneListing />} />
               {/* Timezone routes - catch-all at the end to match /epoch-to-* pattern */}
               <Route
