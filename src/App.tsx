@@ -20,6 +20,8 @@ import Countdown from './pages/Countdown';
 import UnixCountdown from './pages/UnixCountdown';
 import { TimezonePage } from './pages/TimezonePage';
 import { TimezoneListing } from './pages/TimezoneListing';
+import { FreebiesListing } from './pages/FreebiesListing';
+import { FreebieDetail } from './pages/FreebieDetail';
 import { getTimezoneConfig } from './utils/timezoneConfig';
 import i18n from './i18n';
 
@@ -238,6 +240,21 @@ function App() {
           }
         };
       }
+      case '/freebies':
+        return {
+          ...defaultConfig,
+          title: isChinese
+            ? '免费资源 - 设计工具和模板'
+            : t('freebies.listing.seoTitle'),
+          description: isChinese
+            ? '浏览我们的免费设计资源集合，包括字体、图标、模板等。'
+            : t('freebies.listing.seoDescription'),
+          keywords: isChinese
+            ? '免费资源, 设计工具, 免费模板, 免费字体'
+            : t('freebies.listing.seoKeywords'),
+          url: currentUrl,
+          type: 'website' as const,
+        };
       default:
         // Check if this is a timezone route
         const timezoneMatch = location.pathname.match(/^\/epoch-to-([a-z]+)$/i);
@@ -376,6 +393,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/timezones" element={<TimezoneListing />} />
+              <Route path="/freebies" element={<FreebiesListing />} />
+              <Route path="/freebies/:slug" element={<FreebieDetail />} />
               {/* Timezone routes - catch-all at the end to match /epoch-to-* pattern */}
               <Route
                 path="*"

@@ -15,6 +15,7 @@
     "about": "About",
     "faq": "FAQ",
     "blogs": "Blogs",
+    "freebies": "Free Resources",
     "toggleTheme": "Toggle theme",
     "epochConverter": "Epoch Converter",
     "weekNumber": "Week Number",
@@ -322,6 +323,46 @@
     "milliseconds": "milliseconds",
     "microseconds": "microseconds",
     "nanoseconds": "nanoseconds"
+  },
+  "freebies": {
+    "listing": {
+      "title": "Free Resources",
+      "description": "Discover our collection of free design resources, tools, and templates. {{count}} freebies available.",
+      "searchPlaceholder": "Search freebies by title, description, or tags...",
+      "resultsCount": "Found {{count}} freebie{{count, plural, one {} other {s}}} for \"{{query}}\"",
+      "noResults": "No freebies found",
+      "tryDifferentSearch": "Try adjusting your search terms or browse all freebies.",
+      "clearSearch": "Clear search",
+      "seoTitle": "Free Resources - Design Tools & Templates | Epoch Tools",
+      "seoDescription": "Browse our collection of free design resources including fonts, icons, templates, and more. Download high-quality freebies for your projects.",
+      "seoKeywords": "free resources, free design tools, free templates, free fonts, free icons, design freebies"
+    },
+    "detail": {
+      "backToListing": "Back to Freebies",
+      "notFound": "Freebie Not Found",
+      "notFoundDescription": "The freebie you're looking for doesn't exist or has been removed.",
+      "downloads": "downloads",
+      "discoverMore": "Discover More Free Resources"
+    },
+    "emailCapture": {
+      "title": "Get This Free Resource",
+      "description": "Enter your email address to download \"{{title}}\" instantly.",
+      "emailLabel": "Email address",
+      "placeholder": "Enter your email address",
+      "buttonText": "Download Now",
+      "submitting": "Processing...",
+      "privacyNote": "We respect your privacy. Your email will only be used to deliver this resource.",
+      "privacyLink": "Privacy Policy",
+      "success": {
+        "title": "Check Your Email!",
+        "message": "We've sent the download link to your email address. Please check your inbox (and spam folder)."
+      },
+      "errors": {
+        "required": "Email address is required",
+        "invalid": "Please enter a valid email address",
+        "submitFailed": "Something went wrong. Please try again."
+      }
+    }
   }
 }
 

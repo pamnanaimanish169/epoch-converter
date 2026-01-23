@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw, BookMarked, Timer, Languages, Clock, ChevronDown, ChevronRight, Globe } from 'lucide-react';
+import { Home, Sun, Moon, Info, HelpCircle, Calendar, RefreshCw, BookMarked, Timer, Languages, Clock, ChevronDown, ChevronRight, Globe, Gift } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getPopularTimezones } from '../utils/timezoneConfig';
@@ -55,6 +55,12 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 <Link to="https://blog.epoch-tools.com/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <BookMarked className="w-4 h-4" />
                   <span>{t('navigation.blogs')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/freebies" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <Gift className="w-4 h-4" />
+                  <span>{t('navigation.freebies')}</span>
                 </Link>
               </li>
               <li>
