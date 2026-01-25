@@ -13,18 +13,32 @@ export const FreebieDetail = () => {
   const relatedFreebies = freebie ? getRelatedFreebies(freebie, 3) : [];
 
   const handleEmailSubmit = async (email: string) => {
-    // In production, this would integrate with your email service provider
-    // For now, we'll simulate an API call
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        console.log('Email submitted:', email, 'for freebie:', freebie?.title);
-        // Here you would typically:
-        // 1. Send email to your backend/email service
-        // 2. Trigger automated email delivery
-        // 3. Track the submission
-        resolve();
-      }, 1000);
+    if (!freebie) {
+      throw new Error('Freebie not found');
+    }
+
+    // Use VITE_API_URL if set, otherwise use relative path (Vite proxy handles it)
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+    
+    const response = await fetch(`${apiUrl}/api/subscribe`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        freebieId: freebie.slug,
+        freebieTitle: freebie.title,
+      }),
     });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.error || 'Failed to subscribe');
+    }
+
+    return data;
   };
 
   if (!freebie) {
