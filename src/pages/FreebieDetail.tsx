@@ -1,23 +1,25 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, Calendar, Download, Tag } from 'lucide-react';
+import { PortableText } from '@portabletext/react';
 import { EmailCapture } from '../components/EmailCapture';
 import { FreebieCard } from '../components/FreebieCard';
-import { getFreebieBySlug, getRelatedFreebies } from '../utils/freebiesData';
+import { useFreebieBySlug, useRelatedFreebies } from '../hooks/useFreebies';
+import { sanityClient, getSanityImageUrl } from '../lib/sanity';
 
 export const FreebieDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
 
-  const freebie = slug ? getFreebieBySlug(slug) : undefined;
-  const relatedFreebies = freebie ? getRelatedFreebies(freebie, 3) : [];
+  const { data: freebie, isLoading, error } = useFreebieBySlug(slug || '');
+  const { data: relatedFreebies = [] } = useRelatedFreebies(freebie?.id || '', 3);
 
   const handleEmailSubmit = async (email: string) => {
     if (!freebie) {
       throw new Error('Freebie not found');
     }
 
-    // Use VITE_API_URL if set, otherwise use relative path (Vite proxy handles it)
     const apiUrl = import.meta.env.VITE_API_URL || '';
     
     const response = await fetch(`${apiUrl}/api/subscribe`, {
@@ -41,7 +43,30 @@ export const FreebieDetail = () => {
     return data;
   };
 
-  if (!freebie) {
+  // Fetch full content with portable text
+  const { data: fullContent } = useQuery({
+    queryKey: ['freebie-content', slug],
+    queryFn: async () => {
+      if (!slug) return null;
+      const query = `*[_type == "freebie" && slug.current == $slug][0] {
+        content
+      }`;
+      return await sanityClient.fetch(query, { slug }, { perspective: 'published' });
+    },
+    enabled: !!slug,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6">
+        <div className="flex items-center justify-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !freebie) {
     return (
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -61,38 +86,52 @@ export const FreebieDetail = () => {
     );
   }
 
-  // Convert markdown-like content to HTML (simple implementation)
-  const formatContent = (content: string) => {
-    return content
-      .split('\n')
-      .map((line, index) => {
-        // Headers
-        if (line.startsWith('# ')) {
-          return <h1 key={index} className="text-3xl font-bold text-gray-900 dark:text-white mt-8 mb-4">{line.substring(2)}</h1>;
-        }
-        if (line.startsWith('## ')) {
-          return <h2 key={index} className="text-2xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">{line.substring(3)}</h2>;
-        }
-        if (line.startsWith('### ')) {
-          return <h3 key={index} className="text-xl font-semibold text-gray-900 dark:text-white mt-4 mb-2">{line.substring(4)}</h3>;
-        }
-        // Lists
-        if (line.startsWith('- ') || line.startsWith('* ')) {
-          return <li key={index} className="ml-6 mb-1 text-gray-700 dark:text-gray-300">{line.substring(2)}</li>;
-        }
-        // Code blocks (simple detection)
-        if (line.startsWith('```')) {
-          return null; // Skip code block markers for now
-        }
-        // Bold text
-        const boldLine = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        // Empty lines
-        if (line.trim() === '') {
-          return <br key={index} />;
-        }
-        // Regular paragraphs
-        return <p key={index} className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: boldLine }} />;
-      });
+  // Portable Text components for rendering
+  const portableTextComponents = {
+    types: {
+      image: ({ value }: any) => (
+        <img
+          src={getSanityImageUrl(value)}
+          alt={value.alt || ''}
+          className="my-4 rounded-lg"
+        />
+      ),
+    },
+    block: {
+      h1: ({ children }: any) => (
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mt-8 mb-4">
+          {children}
+        </h1>
+      ),
+      h2: ({ children }: any) => (
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+          {children}
+        </h2>
+      ),
+      h3: ({ children }: any) => (
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-4 mb-2">
+          {children}
+        </h3>
+      ),
+      normal: ({ children }: any) => (
+        <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          {children}
+        </p>
+      ),
+    },
+    list: {
+      bullet: ({ children }: any) => (
+        <ul className="list-disc ml-6 mb-4">{children}</ul>
+      ),
+      number: ({ children }: any) => (
+        <ol className="list-decimal ml-6 mb-4">{children}</ol>
+      ),
+    },
+    listItem: {
+      bullet: ({ children }: any) => (
+        <li className="mb-1 text-gray-700 dark:text-gray-300">{children}</li>
+      ),
+    },
   };
 
   return (
@@ -111,7 +150,6 @@ export const FreebieDetail = () => {
         <div className="lg:col-span-2 space-y-8">
           {/* Hero Section */}
           <div>
-            {/* Title */}
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               {freebie.title}
             </h1>
@@ -152,7 +190,16 @@ export const FreebieDetail = () => {
           {/* Content Section */}
           <article className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-8">
             <div className="max-w-none text-base leading-relaxed">
-              {formatContent(freebie.content)}
+              {fullContent?.content ? (
+                <PortableText
+                  value={fullContent.content}
+                  components={portableTextComponents}
+                />
+              ) : (
+                <p className="text-gray-700 dark:text-gray-300">
+                  {freebie.description}
+                </p>
+              )}
             </div>
           </article>
         </div>
@@ -182,4 +229,3 @@ export const FreebieDetail = () => {
     </div>
   );
 };
-

@@ -27,5 +27,7 @@ export interface Freebie {
   createdAt: string;
   updatedAt?: string;
   downloadCount?: number;
+  downloadFile?: string; // URL to the downloadable file
+  downloadUrl?: string; // Alternative external download URL
   relatedFreebies?: string[];
 }

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Search, Gift } from 'lucide-react';
 import { FreebieCard } from '../components/FreebieCard';
 import { Pagination } from '../components/Pagination';
-import { FREEBIES, searchFreebies } from '../utils/freebiesData';
+import { useFreebies, useSearchFreebies } from '../hooks/useFreebies';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -12,12 +12,16 @@ export const FreebiesListing = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Fetch all freebies or search results
+  const { data: allFreebies = [], isLoading: isLoadingAll } = useFreebies();
+  const { data: searchResults = [], isLoading: isLoadingSearch } = useSearchFreebies(searchQuery);
+
   const filteredFreebies = useMemo(() => {
     if (searchQuery.trim()) {
-      return searchFreebies(searchQuery);
+      return searchResults;
     }
-    return FREEBIES;
-  }, [searchQuery]);
+    return allFreebies;
+  }, [searchQuery, searchResults, allFreebies]);
 
   const paginatedFreebies = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -26,12 +30,22 @@ export const FreebiesListing = () => {
   }, [filteredFreebies, currentPage]);
 
   const totalPages = Math.ceil(filteredFreebies.length / ITEMS_PER_PAGE);
+  const isLoading = isLoadingAll || (searchQuery.trim() && isLoadingSearch);
 
-  // Reset to page 1 when search changes
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
     setCurrentPage(1);
   };
+
+  if (isLoading) {
+    return (
+      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6">
+        <div className="flex items-center justify-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-6">
@@ -44,7 +58,7 @@ export const FreebiesListing = () => {
           </h1>
         </div>
         <p className="text-gray-600 dark:text-gray-400">
-          {t('freebies.listing.description', { count: FREEBIES.length })}
+          {t('freebies.listing.description', { count: allFreebies.length })}
         </p>
       </div>
 
@@ -110,4 +124,3 @@ export const FreebiesListing = () => {
     </div>
   );
 };
-

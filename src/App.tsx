@@ -22,6 +22,7 @@ import { TimezonePage } from './pages/TimezonePage';
 import { TimezoneListing } from './pages/TimezoneListing';
 import { FreebiesListing } from './pages/FreebiesListing';
 import { FreebieDetail } from './pages/FreebieDetail';
+import { FreebieDownload } from './pages/FreebieDownload';
 import { getTimezoneConfig } from './utils/timezoneConfig';
 import i18n from './i18n';
 
@@ -395,6 +396,7 @@ function App() {
               <Route path="/timezones" element={<TimezoneListing />} />
               <Route path="/freebies" element={<FreebiesListing />} />
               <Route path="/freebies/:slug" element={<FreebieDetail />} />
+              <Route path="/download/:slug" element={<FreebieDownload />} />
               {/* Timezone routes - catch-all at the end to match /epoch-to-* pattern */}
               <Route
                 path="*"
