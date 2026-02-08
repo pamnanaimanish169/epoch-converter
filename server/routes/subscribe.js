@@ -1,4 +1,5 @@
 import brevo from '@getbrevo/brevo';
+import { generateDownloadToken } from '../lib/token.js';
 
 /**
  * POST /api/subscribe
@@ -90,11 +91,14 @@ export async function subscribeHandler(req, res) {
     
     const apiInstance = new brevo.TransactionalEmailsApi();
 
-    // Construct download link
+    // Generate secure download token
+    const downloadToken = generateDownloadToken(email, freebieId);
+    
+    // Construct tracking download link (will redirect to actual file after tracking)
     const baseUrl = process.env.BASE_URL || 'https://epoch-tools.com';
-    const downloadLink = freebieDownloadLink;
+    const trackingDownloadLink = `${baseUrl}/download/${freebieId}?email=${encodeURIComponent(email)}&token=${encodeURIComponent(downloadToken)}`;
 
-    console.log('downloadLink', downloadLink);
+    console.log('Tracking download link generated:', trackingDownloadLink);
 
     // Prepare email
     const sendSmtpEmail = new brevo.SendSmtpEmail();
@@ -110,10 +114,11 @@ export async function subscribeHandler(req, res) {
     
     sendSmtpEmail.params = {
       freebieTitle,
-      downloadLink,
+      downloadLink: trackingDownloadLink, // Use tracking link instead of direct link
       userEmail: email,
       currentYear: new Date().getFullYear().toString(),
-      unsubscribeLink: `${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}`
+      unsubscribeLink: `${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}`,
+      downloadToken, // Include token for template use if needed
     };
 
     // Send email via Brevo

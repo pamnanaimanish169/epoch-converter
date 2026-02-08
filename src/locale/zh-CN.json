@@ -313,6 +313,60 @@
     "milliseconds": "毫秒",
     "microseconds": "微秒",
     "nanoseconds": "纳秒"
+  },
+  "freebies": {
+    "listing": {
+      "title": "免费资源",
+      "description": "发现我们的免费设计资源、工具和模板集合。{{count}} 个免费资源可用。",
+      "searchPlaceholder": "按标题、描述或标签搜索免费资源...",
+      "resultsCount": "找到 {{count}} 个免费资源 {{count, plural, one {} other {} }} 用于 \"{{query}}\"",
+      "noResults": "未找到免费资源",
+      "tryDifferentSearch": "尝试调整您的搜索词或浏览所有免费资源。",
+      "clearSearch": "清除搜索",
+      "seoTitle": "免费资源 - 设计工具和模板 | Epoch Tools",
+      "seoDescription": "浏览我们的免费设计资源集合，包括字体、图标、模板等。为您的项目下载高质量的免费资源。",
+      "seoKeywords": "免费资源, 免费设计工具, 免费模板, 免费字体, 免费图标, 设计免费资源"
+    },
+    "detail": {
+      "backToListing": "返回免费资源",
+      "notFound": "未找到免费资源",
+      "notFoundDescription": "您要查找的免费资源不存在或已被删除。",
+      "downloads": "下载次数",
+      "discoverMore": "发现更多免费资源"
+    },
+    "emailCapture": {
+      "title": "获取此免费资源",
+      "description": "输入您的电子邮件地址以立即下载 \"{{title}}\"。",
+      "emailLabel": "电子邮件地址",
+      "placeholder": "输入您的电子邮件地址",
+      "buttonText": "立即下载",
+      "submitting": "处理中...",
+      "privacyNote": "我们尊重您的隐私。您的电子邮件仅用于提供此资源。",
+      "privacyLink": "隐私政策",
+      "success": {
+        "title": "检查您的电子邮件！",
+        "message": "我们已将下载链接发送到您的电子邮件地址。请检查您的收件箱（和垃圾邮件文件夹）。"
+      },
+      "errors": {
+        "required": "需要电子邮件地址",
+        "invalid": "请输入有效的电子邮件地址",
+        "submitFailed": "出了点问题。请重试。"
+      }
+    },
+    "download": {
+      "loading": "准备下载...",
+      "error": "下载错误",
+      "backToListing": "返回免费资源",
+      "notFound": "未找到免费资源",
+      "notFoundDescription": "您要查找的免费资源不存在或已被删除。",
+      "success": "下载已开始！",
+      "successMessage": "您的下载应该很快就会开始。正在重定向到免费资源页面...",
+      "viewFreebie": "查看免费资源详情",
+      "retry": "重试",
+      "back": "返回",
+      "preparing": "正在准备您的下载...",
+      "startDownload": "开始下载"
+    }
   }
 }
 

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { subscribeHandler } from './routes/subscribe.js';
+import { trackDownloadHandler } from './routes/trackDownload.js';
 
 // Get the directory of the current module
 const __filename = fileURLToPath(import.meta.url);
@@ -16,6 +17,9 @@ dotenv.config({ path: join(__dirname, '..', '.env') });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Trust proxy for accurate IP addresses (important for production)
+app.set('trust proxy', true);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -27,6 +31,7 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.post('/api/subscribe', subscribeHandler);
+app.post('/api/track-download', trackDownloadHandler);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
