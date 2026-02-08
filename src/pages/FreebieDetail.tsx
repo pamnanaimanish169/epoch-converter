@@ -15,6 +15,8 @@ export const FreebieDetail = () => {
   const { data: freebie, isLoading, error } = useFreebieBySlug(slug || '');
   const { data: relatedFreebies = [] } = useRelatedFreebies(freebie?.id || '', 3);
 
+  console.log('freebie', freebie);
+
   const handleEmailSubmit = async (email: string) => {
     if (!freebie) {
       throw new Error('Freebie not found');
@@ -31,6 +33,7 @@ export const FreebieDetail = () => {
         email,
         freebieId: freebie.slug,
         freebieTitle: freebie.title,
+        freebieDownloadLink: freebie.downloadUrl,
       }),
     });
 
@@ -51,7 +54,10 @@ export const FreebieDetail = () => {
       const query = `*[_type == "freebie" && slug.current == $slug][0] {
         content
       }`;
-      return await sanityClient.fetch(query, { slug }, { perspective: 'published' });
+      // Use 'drafts' perspective to include both drafts and published documents
+      // Change to 'published' for production to only show published content
+      const perspective = import.meta.env.DEV ? 'drafts' : 'published';
+      return await sanityClient.fetch(query, { slug }, { perspective });
     },
     enabled: !!slug,
   });
@@ -96,6 +102,51 @@ export const FreebieDetail = () => {
           className="my-4 rounded-lg"
         />
       ),
+      table: ({ value }: any) => {
+        if (!value?.rows || value.rows.length === 0) return null;
+        
+        const rows = value.rows;
+        const headerRow = rows.find((row: any) => row.isHeader) || rows[0];
+        const dataRows = rows.filter((row: any) => row !== headerRow);
+        
+        return (
+          <div className="my-8 overflow-x-auto">
+            <table className="w-full border-collapse border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden">
+              {headerRow && headerRow.cells && (
+                <thead className="bg-gray-100 dark:bg-gray-800">
+                  <tr>
+                    {headerRow.cells.map((cell: string, index: number) => (
+                      <th
+                        key={index}
+                        className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white border-b border-gray-300 dark:border-gray-700"
+                      >
+                        {cell}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+              )}
+              <tbody className="bg-white dark:bg-gray-900">
+                {dataRows.map((row: any, rowIndex: number) => (
+                  <tr
+                    key={rowIndex}
+                    className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                  >
+                    {row.cells?.map((cell: string, cellIndex: number) => (
+                      <td
+                        key={cellIndex}
+                        className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      },
     },
     block: {
       h1: ({ children }: any) => (

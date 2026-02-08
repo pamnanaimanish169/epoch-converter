@@ -329,7 +329,7 @@
       "title": "Free Resources",
       "description": "Discover our collection of free design resources, tools, and templates. {{count}} freebies available.",
       "searchPlaceholder": "Search freebies by title, description, or tags...",
-      "resultsCount": "Found {{count}} freebie{{count, plural, one {} other {s}}} for \"{{query}}\"",
+      "resultsCount": "Found {{count}} freebie {{count, plural, one {is} other {are} }} for \"{{query}}\"",
       "noResults": "No freebies found",
       "tryDifferentSearch": "Try adjusting your search terms or browse all freebies.",
       "clearSearch": "Clear search",

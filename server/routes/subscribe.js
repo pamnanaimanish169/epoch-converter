@@ -6,7 +6,8 @@ import brevo from '@getbrevo/brevo';
  */
 export async function subscribeHandler(req, res) {
   try {
-    const { email, freebieId, freebieTitle } = req.body;
+    console.log('subscribeHandler called', req.body);
+    const { email, freebieId, freebieTitle, freebieDownloadLink } = req.body;
 
     // Validate required fields
     if (!email) {
@@ -29,6 +30,14 @@ export async function subscribeHandler(req, res) {
         error: 'Freebie title is required'
       });
     }
+
+    if (!freebieDownloadLink) {
+      return res.status(400).json({
+        success: false,
+        error: 'Freebie download link is required'
+      });
+    }
+    console.log('freebieDownloadLink', freebieDownloadLink);
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -83,7 +92,9 @@ export async function subscribeHandler(req, res) {
 
     // Construct download link
     const baseUrl = process.env.BASE_URL || 'https://epoch-tools.com';
-    const downloadLink = `${baseUrl}/download/${freebieId}`;
+    const downloadLink = freebieDownloadLink;
+
+    console.log('downloadLink', downloadLink);
 
     // Prepare email
     const sendSmtpEmail = new brevo.SendSmtpEmail();

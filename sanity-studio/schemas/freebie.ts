@@ -85,6 +85,9 @@ export default defineType({
             },
           ],
         },
+        {
+          type: 'table',
+        },
       ],
       validation: (Rule) => Rule.required(),
     }),
