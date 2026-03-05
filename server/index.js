@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { subscribeHandler } from './routes/subscribe.js';
 import { trackDownloadHandler } from './routes/trackDownload.js';
+import { getDownloadEmailsHandler } from './routes/getDownloadEmails.js';
 
 // Get the directory of the current module
 const __filename = fileURLToPath(import.meta.url);
@@ -32,6 +33,7 @@ app.get('/health', (req, res) => {
 // API routes
 app.post('/api/subscribe', subscribeHandler);
 app.post('/api/track-download', trackDownloadHandler);
+app.get('/api/download-emails/:freebieId', getDownloadEmailsHandler);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

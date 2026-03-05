@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: epoch-converter-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm run server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          type: web
+          name: epoch-converter-api
+          property: port
+    # Environment variables to set in Render dashboard:
+    # - VITE_SANITY_PROJECT_ID
+    # - VITE_SANITY_DATASET
+    # - VITE_SANITY_WRITE_API_TOKEN
+    # - BREVO_API_KEY
+    # - BREVO_SENDER_EMAIL
+    # - BREVO_SENDER_NAME
+    # - BREVO_TEMPLATE_ID
+    # - BASE_URL
+    # - DOWNLOAD_TOKEN_SECRET
+
