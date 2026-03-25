@@ -23,8 +23,11 @@ import { TimezoneListing } from './pages/TimezoneListing';
 import { FreebiesListing } from './pages/FreebiesListing';
 import { FreebieDetail } from './pages/FreebieDetail';
 import { FreebieDownload } from './pages/FreebieDownload';
+import { UnixTimestampDatePage } from './pages/UnixTimestampDatePage';
+import { UnixTimestampMonthHubPage } from './pages/UnixTimestampMonthHubPage';
 import { getTimezoneConfig } from './utils/timezoneConfig';
 import i18n from './i18n';
+import { isValidIsoDate, isValidMonth } from './utils/pseoDateUtils';
 
 function App() {
   const { t } = useTranslation();
@@ -257,6 +260,52 @@ function App() {
           type: 'website' as const,
         };
       default:
+        // Date-level pSEO pages
+        if (location.pathname.startsWith('/unix-timestamp/')) {
+          const rawDate = location.pathname.replace('/unix-timestamp/', '');
+          if (isValidIsoDate(rawDate)) {
+            const readable = formatDateTimeString(new Date(`${rawDate}T00:00:00Z`), true).replace(' UTC', ' GMT');
+            return {
+              ...defaultConfig,
+              title: `Unix Timestamp for ${rawDate} | Future Date Epoch Converter`,
+              description: `Find the Unix timestamp for ${rawDate} 00:00:00 UTC. Includes timezone conversions, planning use cases, and copy-ready code examples for future scheduling.`,
+              keywords: `unix timestamp for ${rawDate}, epoch for ${rawDate}, future unix date converter, unix timestamp planner`,
+              url: currentUrl,
+              type: 'website' as const,
+              structuredData: {
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: `Unix Timestamp for ${rawDate}`,
+                description: `Future Unix timestamp reference for ${rawDate}`,
+                datePublished: '2026-03-25',
+                dateModified: '2026-03-25',
+                about: `Unix timestamp conversion for ${readable}`,
+              },
+            };
+          }
+        }
+
+        // Monthly pSEO hubs
+        if (location.pathname.startsWith('/unix-timestamps/')) {
+          const rawMonth = location.pathname.replace('/unix-timestamps/', '');
+          if (isValidMonth(rawMonth)) {
+            return {
+              ...defaultConfig,
+              title: `Unix Timestamps for ${rawMonth} | Monthly Future Date Hub`,
+              description: `Browse priority Unix timestamp pages for ${rawMonth}. Compare future dates for release planning, fiscal cutovers, and seasonal API scheduling.`,
+              keywords: `unix timestamps ${rawMonth}, epoch ${rawMonth}, monthly unix timestamp hub`,
+              url: currentUrl,
+              type: 'website' as const,
+              structuredData: {
+                '@context': 'https://schema.org',
+                '@type': 'CollectionPage',
+                name: `Unix Timestamps for ${rawMonth}`,
+                description: `Monthly collection for future Unix timestamp pages`,
+              },
+            };
+          }
+        }
+
         // Check if this is a timezone route
         const timezoneMatch = location.pathname.match(/^\/epoch-to-([a-z]+)$/i);
         if (timezoneMatch) {
@@ -397,6 +446,8 @@ function App() {
               <Route path="/freebies" element={<FreebiesListing />} />
               <Route path="/freebies/:slug" element={<FreebieDetail />} />
               <Route path="/download/:slug" element={<FreebieDownload />} />
+              <Route path="/unix-timestamp/:date" element={<UnixTimestampDatePage onCopy={handleCopy} />} />
+              <Route path="/unix-timestamps/:month" element={<UnixTimestampMonthHubPage />} />
               {/* Timezone routes - catch-all at the end to match /epoch-to-* pattern */}
               <Route
                 path="*"

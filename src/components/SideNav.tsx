@@ -26,6 +26,11 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
     newParams.set('lang', newLang);
     setSearchParams(newParams, { replace: true });
   };
+
+  const handleSidebarLinkClick = () => {
+    // Always move to top on route navigation from sidebar.
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <aside className="sticky top-6">
       <nav className="p-4 transition-colors">
@@ -34,19 +39,19 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
             <h3 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">{t('navigation.pages')}</h3>
             <ul className="space-y-1">
               <li>
-                <Link to="/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Home className="w-4 h-4" />
                   <span>{t('navigation.home')}</span>
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/about" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Info className="w-4 h-4" />
                   <span>{t('navigation.about')}</span>
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/faq" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <HelpCircle className="w-4 h-4" />
                   <span>{t('navigation.faq')}</span>
                 </Link>
@@ -58,7 +63,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 </Link>
               </li>
               <li>
-                <Link to="/freebies" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/freebies" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Gift className="w-4 h-4" />
                   <span>{t('navigation.freebies')}</span>
                 </Link>
@@ -82,7 +87,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
             <h3 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">{t('navigation.tools')}</h3>
             <ul className="space-y-1">
               <li>
-                <Link to="/" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <RefreshCw className="w-4 h-4" />
                   <span>{t('navigation.epochConverter')}</span>
                 </Link>
@@ -94,15 +99,21 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                 </Link>
               </li> */}
               <li>
-                <Link to="/epoch-countdown" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/epoch-countdown" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Timer className="w-4 h-4" />
                   <span>{t('navigation.countdown')}</span>
                 </Link>
               </li>
               <li>
-                <Link to="/unix-countdown" className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <Link to="/unix-countdown" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
                   <Clock className="w-4 h-4" />
                   <span>{t('navigation.unixCountdown')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/unix-timestamps/2026-12" onClick={handleSidebarLinkClick} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <Calendar className="w-4 h-4" />
+                  <span>Future Unix Timestamps</span>
                 </Link>
               </li>
               <li>
@@ -124,6 +135,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                       <li key={tz.code}>
                         <Link
                           to={`/epoch-to-${tz.code.toLowerCase()}`}
+                          onClick={handleSidebarLinkClick}
                           className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm"
                         >
                           <span>{tz.code}</span>
@@ -134,6 +146,7 @@ export const SideNav = ({ onToggleTheme, isDark }: SideNavProps) => {
                     <li>
                       <Link
                         to="/timezones"
+                        onClick={handleSidebarLinkClick}
                         className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm font-medium"
                       >
                         <span>View All 43 Timezones →</span>

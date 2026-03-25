@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:pseo": "node scripts/generate-pseo-pages.js",
+    "prebuild": "npm run generate:pseo",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
