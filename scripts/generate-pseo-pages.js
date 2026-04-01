@@ -4,6 +4,7 @@ import path from 'path';
 const PROJECT_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CSV_PATH = path.join(PROJECT_ROOT, 'data', 'dates.csv');
 const OUTPUT_TS_PATH = path.join(PROJECT_ROOT, 'src', 'data', 'pseoDates.ts');
+const OUTPUT_RUNTIME_JS_PATH = path.join(PROJECT_ROOT, 'data', 'pseoDatesRuntime.mjs');
 const SITEMAP_PATH = path.join(PROJECT_ROOT, 'public', 'sitemap.xml');
 
 const START_DATE = '2026-03-25';
@@ -202,6 +203,24 @@ ${hubs}
   fs.writeFileSync(OUTPUT_TS_PATH, content, 'utf8');
 }
 
+function writeRuntimeJsFile(selectedEntries, monthHubs) {
+  const datesArray = JSON.stringify(
+    selectedEntries.map((entry) => ({
+      date: entry.date,
+      isGscLike: Boolean(entry.isGscLike),
+    })),
+  );
+  const monthsArray = JSON.stringify(monthHubs);
+
+  const jsContent = `// Auto-generated runtime data for prerendering. Do not edit manually.
+export const PSEO_DAILY_DATES = ${datesArray};
+export const PSEO_MONTH_HUBS = ${monthsArray};
+`;
+
+  fs.mkdirSync(path.dirname(OUTPUT_RUNTIME_JS_PATH), { recursive: true });
+  fs.writeFileSync(OUTPUT_RUNTIME_JS_PATH, jsContent, 'utf8');
+}
+
 function writeSitemap(selectedEntries, monthHubs) {
   const staticUrls = ['/', '/about', '/faq', '/week-number', '/epoch-countdown', '/unix-countdown', '/timezones'];
   const staticBlocks = staticUrls
@@ -258,6 +277,7 @@ function main() {
   const selectedEntries = selectDates(dates);
   const monthHubs = buildMonthHubs();
   writeTsFile(selectedEntries, monthHubs);
+  writeRuntimeJsFile(selectedEntries, monthHubs);
   writeSitemap(selectedEntries, monthHubs);
 
   const sampleDates = ['2026-03-25', '2026-12-10', '2027-01-01'];
