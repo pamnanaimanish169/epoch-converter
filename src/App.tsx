@@ -60,12 +60,8 @@ function App() {
   }, [searchParams, setSearchParams]);
 
   // Base URL for the site (update this with your actual domain)
-  // On the server (SSR/SSG), window is undefined so we fall back to the canonical production URL.
-  const baseUrl =
-    typeof window !== 'undefined'
-      ? window.location.origin
-      : 'https://epoch-tools.com';
-  const currentUrl = `${baseUrl}${location.pathname}${location.search || ''}`;
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+  const currentUrl = `${baseUrl}${location.pathname}`;
   
   // Get current language
   const currentLang = i18n.language;

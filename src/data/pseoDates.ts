@@ -4,7 +4,7 @@ export interface PseoDateEntry {
   isGscLike: boolean;
 }
 
-export const PSEO_GENERATED_AT = "2026-04-01T16:13:39.711Z";
+export const PSEO_GENERATED_AT = "2026-03-25T15:07:35.078Z";
 export const PSEO_START_DATE = "2026-03-25";
 export const PSEO_MAX_DAILY_PAGES = 200;
 
